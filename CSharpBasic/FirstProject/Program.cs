@@ -32,3 +32,13 @@ namespace FirstProject
         }
     }
 }
+
+// namespace 형식은 보통 
+// 회사/팀명 . 프로젝트명 . 기술스택명 . 세부 카테고리 
+namespace SecondProject
+{
+    public class Prgram
+    {
+
+    }
+}
