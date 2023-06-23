@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inheritance
 {
-    internal class Creature
+    // abstract : 추상키워드 
+    // 추상화용도로 사용한다는것을 명시하는 키워드, 동적할당 불가능하다는 얘기임.
+    internal abstract class Creature
     {
         public int DnaCode;
 
