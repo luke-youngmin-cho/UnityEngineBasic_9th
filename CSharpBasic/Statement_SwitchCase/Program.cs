@@ -1,4 +1,6 @@
-﻿namespace Statement_SwitchCase
+﻿using System.Diagnostics;
+
+namespace Statement_SwitchCase
 {
     // enum 열거형 사용자정의 자료형
     enum StateType
@@ -9,6 +11,7 @@
         Attack,// ...00000011
     }
 
+    [Flags]
     enum LayerType
     {
         Default = 0 << 0, // ...00000000
@@ -21,6 +24,8 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"{LayerType.Player | LayerType.Enemy}");
+
             string name = "요네";
             switch (name)
             {
