@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Inheritance
 {
@@ -9,7 +10,7 @@ namespace Inheritance
             Knight knight = new Knight();
             knight.hp = 10;
             HpBar knightHpBar = new HpBar();
-            
+            IDamageable damageable = knight;
             knight.onHpChanged += knightHpBar.Refresh;
             knight.onHpChanged += knightHpBar.Refresh;
             knight.onHpChanged += knightHpBar.Refresh;
@@ -63,8 +64,68 @@ namespace Inheritance
                 if (characters[i] is Knight)
                     Console.WriteLine("기사 발견!");
             }
+
         }
 
-        
+        public void Test()
+        {
+            PrintSomething(3);
+            PrintSomething<double>(3); 
+            PrintSomething<long>(3);
+            // Generic 타입 자체가 코드영역에 할당되는게 아니고
+            // (런타임중에 제네릭참조해서 새로운 함수를 만들어서 스택영역에 쌓는게 아님)
+            // 컴파일타임에 컴파일러가 사용되고있는 형태를 함수로 새로 만들어서 코드영역에 할당함. 
+            // ex) Something<T>() 함수가있고, Something<int>() 라는 함수호출을 어딘가에서 하고있으면
+            // 컴파일타임에 Something<int>() 를 만든다.
+
+            Dummy<int> dummy1 = new Dummy<int>();
+            Dummy<float> dummy2 = new Dummy<float>();
+            Dummy<Knight> dummy3 = new Dummy<Knight>();
+            Dummy<IDamageable> dummy4 = new Dummy<IDamageable>();
+        }
+
+
+        public void PrintSomething(int value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public void PrintSomething(float value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public void PrintSomething(string value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public void PrintSomething(int value1, string value2)
+        {
+            Console.WriteLine(value1 + value2);
+        }
+
+        public void PrintSomething<T>(T value)
+        {
+            Console.WriteLine(value);
+        }
+    }
+
+    // 제네릭 클래스
+    public class Dummy<T>
+    {
+        public T value;
+
+        public void SaySomething()
+        {
+            T value1 = value;
+            What<int>();
+            What<T>();
+        }
+
+        public void What<K>()
+        {
+
+        }
     }
 }

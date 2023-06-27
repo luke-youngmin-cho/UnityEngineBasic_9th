@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-06-23T12:26:11.618Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="PRAvHwsv9oK4-Eu4-s1f" version="21.5.0" type="device">
+<mxfile host="app.diagrams.net" modified="2023-06-27T11:28:31.876Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="7eg5dO5GMgKj41EaxZYS" version="21.5.1" type="device">
   <diagram name="페이지-1" id="X873KRTPx-yp5Rnwmtki">
     <mxGraphModel dx="875" dy="1627" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -2026,11 +2026,95 @@
         <mxCell id="diSreX3gM14Q4t2d2hJ_-21" value="NPC&lt;br&gt;Instance" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="6260" y="217.5" width="60" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="kWi-9YiCZ8-MsRX9-sCf-26" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Knight[] knights&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Magician[] magicians&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SwordMan[] swordmen&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;for (knights.length)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; knights[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;for (magicians.length)&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&amp;nbsp; magicians[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;for (swordmen.length)&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&amp;nbsp; swordmen[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kWi-9YiCZ8-MsRX9-sCf-26" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Knight[] knights&amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Magician[] magicians&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;SwordMan[] swordmen&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;for (knights.length)&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp; knights[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;for (magicians.length)&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&amp;nbsp; magicians[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;for (swordmen.length)&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;{&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;&amp;nbsp; swordmen[i].Attack();&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); background-color: initial;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="5420" y="165" width="180" height="275" as="geometry" />
         </mxCell>
-        <mxCell id="kWi-9YiCZ8-MsRX9-sCf-27" value="&lt;div style=&quot;text-align: left;&quot;&gt;IAttackable[] attackers&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;for (attackers.length)&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;{&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp; attackers[i].Attack();&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="kWi-9YiCZ8-MsRX9-sCf-27" value="&lt;div style=&quot;text-align: left;&quot;&gt;IAttackable[] attackers&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;for (attackers.length)&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;{&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp; attackers[i].Attack();&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;}&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="5420" y="450" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-1" value="Inheritance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0050ef;fontColor=#ffffff;strokeColor=#001DBC;" vertex="1" parent="1">
+          <mxGeometry x="6670" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6740" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6900" y="100" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-5" value="Method1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="6770" y="80" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-6" value="0x3D2C142C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6650" y="80" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-7" value="0x3D2C142C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6915" y="122.5" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-8" value="함수포인터" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="6915" y="78" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-9" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7140" y="101" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-10" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7300" y="101" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-11" value="Method1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="7170" y="81" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-12" value="0x3D2C142C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7050" y="81" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-13" value="0x3D2C142C" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7315" y="109" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-14" value="대리자" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="7315" y="79" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-15" value="0x2D242CD2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7050" y="170" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-16" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7140" y="187.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-17" value="Method2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="7170" y="165" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-18" value="0x2D242CD2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7170" y="141" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-19" value="0x2D242CD2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7170" y="226.06" width="90" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-22" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6690" y="252" width="80" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-23" value="대리자(param);" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="6945" y="342.5" width="135" height="97.5" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-24" value="Method1" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7080" y="370" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-25" value="Method2" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7080" y="405" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-26" value="Method3" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7080" y="440" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-28" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6770" y="252" width="80" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-29" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6850" y="252" width="80" height="205" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-27" value="Method2(param)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6682.5" y="360" width="95" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-30" value="SomeMethod(value)&lt;br&gt;{&lt;br&gt;param = value;&lt;br&gt;}" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="7190" y="334.5" width="90" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="-UgkjC0PqGLK23P7Mq2o-31" value="Invoke(Param)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="6682.5" y="410" width="95" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

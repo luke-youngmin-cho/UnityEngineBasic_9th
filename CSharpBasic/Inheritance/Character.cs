@@ -27,7 +27,6 @@ namespace Inheritance
                     return;
 
                 _hp = value;
-
                 //if (onHpChanged != null)
                 //    onHpChanged(value); // 직접호출 
                 //
@@ -38,12 +37,25 @@ namespace Inheritance
 
         private float _hp;
         public delegate void HpChangedHandler(float value);
-        public event HpChangedHandler onHpChanged; 
+        public event HpChangedHandler onHpChanged;
+        public delegate void SomeHandler<in T1, in T2>(T1 value1, T2 value2);
+        public event SomeHandler<double, int> onSomeChanged;
         // event 한정자
         // 대리자의 접근 제한을 위한 한정자
         // +=, -= (구독/ 구독취소) 는 외부 클래스에서 접근 가능.
+        // 구독에 대한표현 : Register, Observe, Listen, Subscribe 다 똑같은말
+        // event 를 호출한다는표현 : Notify (구독자들에게 알림통지)
         // = 는 접근 불가능
+        public event Action action1;
+        public event Action<float> action2;
+        public event Action<int, string> action3;
 
+        public event Func<int> func1;
+        public event Func<float, int> func2;
+        public event Func<float, double, int> func3;
+        public event Func<int, bool> func4;
+
+        public event Predicate<int> predicate;
 
 
         //public float GetHp()
