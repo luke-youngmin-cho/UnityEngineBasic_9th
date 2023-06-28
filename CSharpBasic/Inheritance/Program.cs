@@ -7,7 +7,7 @@ namespace Inheritance
     {
         static void Main(string[] args)
         {
-            Knight knight = new Knight();
+            Character knight = new Knight();
             knight.hp = 10;
             HpBar knightHpBar = new HpBar();
             IDamageable damageable = knight;
@@ -112,10 +112,10 @@ namespace Inheritance
     }
 
     // 제네릭 클래스
+    // 제네릭 : 타입을 정의 할 수 있는 형태를 정의하는 형식 (타입을 일반화 할 수 있는 형식)
     public class Dummy<T>
     {
         public T value;
-
         public void SaySomething()
         {
             T value1 = value;

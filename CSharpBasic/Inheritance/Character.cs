@@ -49,7 +49,6 @@ namespace Inheritance
         public event Action action1;
         public event Action<float> action2;
         public event Action<int, string> action3;
-
         public event Func<int> func1;
         public event Func<float, int> func2;
         public event Func<float, double, int> func3;
