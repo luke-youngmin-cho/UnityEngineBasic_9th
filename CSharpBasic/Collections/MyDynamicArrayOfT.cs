@@ -5,9 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+public class A
+{
+    public int name;
+
+    public void SayHi()
+    {
+        Console.WriteLine("A");
+    }
+}
+
+public class B : A
+{
+    new public int name;
+
+    new public void SayHi()
+    {
+        Console.WriteLine("B");
+    }
+}
+
+public class Tester
+{
+    public void Test()
+    {
+        A a = new A();
+        B b = new B();
+        a.SayHi(); // -> A
+        b.SayHi(); // -> B
+
+        a = b;
+        a.SayHi(); // -> A
+        ((B)a).SayHi(); // -> B
+    }
+}
+
+
 namespace Collections
 {
-    internal class MyDynamicArray : IEnumerable
+    internal class MyDynamicArray<T> : IEnumerable<T>
     {
         private static int DEFAULT_SIZE = 1;
         public int Length => _length;
@@ -75,5 +111,9 @@ namespace Collections
             }
         }
 
+        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

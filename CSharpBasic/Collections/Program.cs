@@ -40,7 +40,23 @@ namespace Collections
                 Console.WriteLine("Removed 2 in hashset");
             }
 
-            ArrayList
+            MyDynamicArray myDynamicArray = new MyDynamicArray();
+            myDynamicArray.Add(3);
+            myDynamicArray.Add(2);
+            myDynamicArray.Add(5);
+            myDynamicArray.Add(7);
+
+            IEnumerator e1 = myDynamicArray.GetEnumerator();
+            while (e1.MoveNext())
+            {
+                Console.WriteLine(e1.Current);
+            }
+            e1.Reset();
+
+            
+            
+            
+            
         }
     }
 }
