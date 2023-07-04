@@ -54,6 +54,7 @@ namespace Collections
 
         /// <summary>
         /// 삽입 알고리즘
+        /// 일반적인 경우 O(1), 공간이 모자란 경우에는 O(N) 
         /// </summary>
         /// <param name="item"></param>
         public void Add(T item)
@@ -69,6 +70,26 @@ namespace Collections
             _items[_count++] = item;
         }
 
+        public T Find(Predicate<T> match)
+        {
+            for (int i = 0; i < _count; i++)
+            {
+                if (match.Invoke(_items[i]))
+                    return _items[i];
+            }
+            return default(T);
+        }
+
+        public MyDynamicArray<T> FindAll(Predicate<T> match)
+        {
+            MyDynamicArray<T> result = new MyDynamicArray<T>();
+            for (int i = 0; i < _count; i++)
+            {
+                if (match.Invoke(_items[i]))
+                    result.Add(_items[i]);
+            }
+            return result;
+        }
         /// <summary>
         /// 탐색 알고리즘
         /// </summary>
