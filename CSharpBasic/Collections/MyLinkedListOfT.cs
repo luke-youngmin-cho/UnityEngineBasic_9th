@@ -92,50 +92,145 @@ namespace Collections
             _tmp.Prev = node;
         }
 
+        public Node<T> Find(T target)
+        {
+            _tmp = _first;
+            while (_tmp != null)
+            {
+                if (Comparer<T>.Default.Compare(_tmp.Value, target) == 0)
+                    return _tmp;
+
+                _tmp = _tmp.Next;
+            }
+
+            return null;
+        }
+
+        public Node<T> FindLast(T target)
+        {
+            _tmp = _last;
+            while (_tmp != null)
+            {
+                if (Comparer<T>.Default.Compare(_tmp.Value, target) == 0)
+                    return _tmp;
+
+                _tmp = _tmp.Prev;
+            }
+
+            return null;
+        }
+
         public Node<T> Find(Predicate<T> match)
         {
+            _tmp = _first;
+            while (_tmp != null)
+            {
+                if (match.Invoke(_tmp.Value))
+                    return _tmp;
 
+                _tmp = _tmp.Next;
+            }
+
+            return null;
         }
 
         public Node<T> FindLast(Predicate<T> match)
         {
+            _tmp = _last;
+            while (_tmp != null)
+            {
+                if (match.Invoke(_tmp.Value))
+                    return _tmp;
 
+                _tmp = _tmp.Prev;
+            }
+
+            return null;
+        }
+
+        public bool Remove(Node<T> node)
+        {
+            if (node == null)
+                return false;
+
+            if (node.Prev != null)
+            {
+                node.Prev.Next = node.Next;
+            }
+            // 삭제하려는 노드가 first 일 경우 (이전 노드가 없으니까)
+            else
+            {
+                _first = node.Next;
+            }
+
+            if (node.Next != null)
+            {
+                node.Next.Prev = node.Prev;
+            }
+            // 삭제하려는 노드가 last 일 경우 (다음 노드가 없으니까)
+            else
+            {
+                _last = node.Prev;
+            }
+
+            return true;
         }
 
         public bool Remove(T value)
         {
+            return Remove(Find(value));
+        }
 
+        public bool RemoveLast(T value)
+        {
+            return Remove(FindLast(value));
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new Enumerator(this);
         }
 
         public struct Enumerator : IEnumerator<T>
         {
-            public T Current => throw new NotImplementedException();
+            public T Current => _currentNode.Value;
 
-            object IEnumerator.Current => throw new NotImplementedException();
+            object IEnumerator.Current => _currentNode.Value;
+
+            private MyLinkedList<T> _linkedList;
+            private Node<T> _currentNode;
+
+            public Enumerator(MyLinkedList<T> linkedList)
+            {
+                _linkedList = linkedList;
+                _currentNode = null;
+            }
 
             public void Dispose()
             {
-                throw new NotImplementedException();
             }
 
             public bool MoveNext()
             {
-                throw new NotImplementedException();
+                if (_currentNode == null)
+                {
+                    _currentNode = _linkedList.First;
+                }
+                else
+                {
+                    _currentNode = _currentNode.Next;
+                }
+                return _currentNode != null;
             }
 
             public void Reset()
             {
-                throw new NotImplementedException();
+                _currentNode = null;
             }
         }
     }
