@@ -112,6 +112,29 @@ namespace Collections
             list.Insert(0, 2);
             Console.WriteLine(list[0]);
             #endregion
+
+
+            #region Hashtable
+
+            Hashtable ht = new Hashtable();
+            ht.Add(1, "철수");
+
+            Dictionary<string, int> dictionary1 = new Dictionary<string, int>();
+            dictionary1.Add("철수", 10);
+            if (dictionary1.TryGetValue("철수", out int grade))
+            {
+                Console.WriteLine("철수 점수 : " + grade);
+            }
+
+            MyHashtable<string, int> dictionary2 = new MyHashtable<string, int>(1000);
+            dictionary2.Add("철수", 40);
+            if (dictionary2.TryGetValue("철수", out grade))
+            {
+                Console.WriteLine("철수 점수 : " + grade);
+            }
+
+            #endregion
+
         }
     }
 }

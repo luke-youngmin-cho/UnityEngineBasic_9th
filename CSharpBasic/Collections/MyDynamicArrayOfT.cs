@@ -142,6 +142,18 @@ namespace Collections
             return true;
         }
 
+        public void RemoveAt(int index)
+        {
+            if (index < 0)
+                throw new IndexOutOfRangeException();
+
+            for (int i = index; i < _count - 1; i++)
+            {
+                _items[i] = _items[i + 1];
+            }
+            _count--;
+        }
+
         IEnumerator IEnumerable.GetEnumerator()
         {
             for (int i = 0; i < _count; i++)
