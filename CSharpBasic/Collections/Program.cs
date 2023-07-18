@@ -113,7 +113,6 @@ namespace Collections
             Console.WriteLine(list[0]);
             #endregion
 
-
             #region Hashtable
 
             Hashtable ht = new Hashtable();
@@ -135,6 +134,18 @@ namespace Collections
 
             #endregion
 
+
+            #region BinaryTree
+
+            AVLTree<int> bt = new AVLTree<int>();
+
+            bt.Add(3);
+            bt.Add(6);
+            bt.Add(7);
+            bt.Add(4);
+            bt.Remove(3);
+
+            #endregion
         }
     }
 }
