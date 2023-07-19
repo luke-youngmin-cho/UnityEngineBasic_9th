@@ -174,11 +174,14 @@ namespace Collections
         /// <returns> 왼쪽 : > 1 , 오른쪽 : < - 1  </returns>
         private int Balance(Node node)
         {
-            return node != null ? (node?.Left?.Height ?? 0 - node?.Right?.Height ?? 0) : 0;
+            return node != null ? ((node?.Left?.Height ?? 0) - (node?.Right?.Height ?? 0)) : 0;
         }
 
         private Node RotateLeft(Node node)
         {
+            if (node == null || node.Right == null)
+                return node;
+
             Node newRoot = node.Right;
             node.Right = newRoot.Left;
             newRoot.Left = node;
@@ -190,6 +193,9 @@ namespace Collections
 
         private Node RotateRight(Node node)
         {
+            if (node == null || node.Left == null)
+                return node;
+
             Node newRoot = node.Left;
             node.Left = newRoot.Right;
             newRoot.Right = node;
