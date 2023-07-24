@@ -145,6 +145,40 @@ namespace SortAlgorithms
         }
 
 
+        public static void RecursiveQuickSort(int[] arr)
+        {
+            RecursiveQuickSort(arr, 0, arr.Length - 1);
+        }
+
+        public static void RecursiveQuickSort(int[] arr, int start, int end)
+        {
+            if (start < end)
+            {
+                int partition = Partition(arr, start, end);
+                RecursiveQuickSort(arr, start, partition - 1);
+                RecursiveQuickSort(arr, partition + 1, end);
+            }
+        }
+
+        private static int Partition(int[] arr, int start, int end)
+        {
+            int pivot = arr[end + (start - end) / 2];
+
+            while (true)
+            {
+                while (arr[start] < pivot) start++;
+                while (arr[end] > pivot) end--;
+
+                if (start < end)
+                {
+                    Swap(ref arr[start], ref arr[end]);
+                }
+                else
+                {
+                    return end;
+                }
+            }
+        }
 
         // ref : 인자를 변수의 참조로 받아야할때 사용하는 키워드
         public static void Swap(ref int a, ref int b)
