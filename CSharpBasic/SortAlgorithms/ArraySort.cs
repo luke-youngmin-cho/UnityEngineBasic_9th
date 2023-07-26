@@ -19,7 +19,7 @@ namespace SortAlgorithms
             int i, j;
             for (i = 0; i < arr.Length - 1; i++)
             {
-                for (j = 0; j < arr.Length -1 - i; j++)
+                for (j = 0; j < arr.Length - 1 - i; j++)
                 {
                     if (arr[j] > arr[j + 1])
                     {
@@ -129,7 +129,7 @@ namespace SortAlgorithms
 
         public static void RecursiveMergeSort(int[] arr)
         {
-            RecursiveMergeSort(arr, 0, arr.Length -1);
+            RecursiveMergeSort(arr, 0, arr.Length - 1);
         }
 
         private static void RecursiveMergeSort(int[] arr, int start, int end)
@@ -196,7 +196,7 @@ namespace SortAlgorithms
             {
                 while (arr[start] < pivot) start++;
                 while (arr[end] > pivot) end--;
-                
+
                 if (start < end)
                 {
                     if (arr[start] == pivot && arr[end] == pivot)
@@ -207,6 +207,92 @@ namespace SortAlgorithms
                 else
                 {
                     return end;
+                }
+            }
+        }
+
+        public static void HeapSort(int[] arr)
+        {
+            //HeapifyTopDown(arr);
+            HeapifyBottomUp(arr);
+
+            InverseHeapify(arr);
+        }
+
+        // O(NLogN)
+        public static void HeapifyTopDown(int[] arr)
+        {
+            int end = 1;
+            while (end < arr.Length)
+            {
+                SIFT_Up(arr, 0, end++);
+            }
+        }
+
+        // O(N) - 모든 단말노드에 대해서 수행할 필요가 없기 때문
+        public static void HeapifyBottomUp(int[] arr)
+        {
+            int end = arr.Length - 1;
+            int current = end;
+
+            while (current >= 0)
+            {
+                SIFT_Down(arr, end, current--);
+            }
+        }
+
+        // O(NLogN)
+        public static void InverseHeapify(int[] arr)
+        {
+            int end = arr.Length - 1;
+            while (end > 0)
+            {
+                Swap(ref arr[0], ref arr[end]);
+                end--;
+                SIFT_Down(arr, end, 1);
+            }
+        }
+
+        // 자식이 부모를 탐색해서 스왑하면서 올라가는 형태의 알고리즘
+        public static void SIFT_Up(int[] arr, int root, int current)
+        {
+            int parent = (current - 1) / 2;
+            while (current > root)
+            {
+                if (arr[current] > arr[parent])
+                {
+                    Swap(ref arr[current], ref arr[parent]);
+                    current = parent;
+                    parent = (current - 1) / 2;
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        // 부모가 자식을 탐색해서 스왑하면서 내려가는 형태의 알고리즘
+        public static void SIFT_Down(int[] arr, int end, int current)
+        {
+            int parent = (current - 1) / 2;
+
+            while (current <= end)
+            {
+                // 오른쪽이 더 크면 스왑 대상을 오른쪽으로 바꿈
+                if (current + 1 <= end &&
+                    arr[current] < arr[current + 1])
+                    current = current + 1;
+
+                if (arr[current] > arr[parent])
+                {
+                    Swap(ref arr[current], ref arr[parent]);
+                    parent = current;
+                    current = parent * 2 + 1;
+                }
+                else
+                {
+                    return;
                 }
             }
         }
