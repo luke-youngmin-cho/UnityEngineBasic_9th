@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 417651398}
   - component: {fileID: 417651397}
   - component: {fileID: 417651396}
+  - component: {fileID: 417651399}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -305,6 +306,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 46.627, y: -49.378, z: 1.672}
+--- !u!114 &417651399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417651395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c1b7edff6c69a54cb4c3e84a4a38a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476070780
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,6 +587,51 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &594770283
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 594770285}
+  - component: {fileID: 594770284}
+  m_Layer: 0
+  m_Name: RaceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &594770284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594770283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e63d04851cfe4b4aac310428706b456, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horses: []
+--- !u!4 &594770285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 594770283}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.847542, y: 24.665195, z: -20.279554}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605922453
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,8 +935,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doMove: 1
-  _speed: 1
-  _stability: 0
+  _speed: 5
+  _stability: 0.062
 --- !u!1 &720559648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,8 +1673,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doMove: 1
-  _speed: 1
-  _stability: 0
+  _speed: 3.65
+  _stability: 0.396
 --- !u!1 &1178711243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,8 +1787,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doMove: 1
-  _speed: 1
-  _stability: 0
+  _speed: 2.27
+  _stability: 0.799
 --- !u!1 &2043806480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1940,8 +1998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doMove: 1
-  _speed: 1
-  _stability: 0
+  _speed: 2.74
+  _stability: 0.705
 --- !u!1 &2108807461
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,5 +2112,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doMove: 1
-  _speed: 1
-  _stability: 0
+  _speed: 3
+  _stability: 0.662
