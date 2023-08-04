@@ -22,4 +22,13 @@ public class RaceManager : MonoBehaviour
     {
         instance = this;
     }
+
+
+    public void StartRace()
+    {
+        foreach (Horse horse in horses)
+        {
+            horse.doMove = true;
+        }
+    }
 }
