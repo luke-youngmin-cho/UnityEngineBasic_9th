@@ -1,168 +1,482 @@
 fileFormatVersion: 2
 guid: 6332ba8c12a42bc4d99f63e4749d9fcf
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: Bip001
-    100002: Bip001 Head
-    100004: Bip001 L Calf
-    100006: Bip001 L Clavicle
-    100008: Bip001 L Finger0
-    100010: Bip001 L Finger01
-    100012: Bip001 L Finger1
-    100014: Bip001 L Finger11
-    100016: Bip001 L Finger2
-    100018: Bip001 L Finger21
-    100020: Bip001 L Finger3
-    100022: Bip001 L Finger31
-    100024: Bip001 L Finger4
-    100026: Bip001 L Finger41
-    100028: Bip001 L Foot
-    100030: Bip001 L Forearm
-    100032: Bip001 L Hand
-    100034: Bip001 L Thigh
-    100036: Bip001 L Toe0
-    100038: Bip001 L UpperArm
-    100040: Bip001 Neck
-    100042: Bip001 Pelvis
-    100044: Bip001 R Calf
-    100046: Bip001 R Clavicle
-    100048: Bip001 R Finger0
-    100050: Bip001 R Finger01
-    100052: Bip001 R Finger1
-    100054: Bip001 R Finger11
-    100056: Bip001 R Finger2
-    100058: Bip001 R Finger21
-    100060: Bip001 R Finger3
-    100062: Bip001 R Finger31
-    100064: Bip001 R Finger4
-    100066: Bip001 R Finger41
-    100068: Bip001 R Foot
-    100070: Bip001 R Forearm
-    100072: Bip001 R Hand
-    100074: Bip001 R Thigh
-    100076: Bip001 R Toe0
-    100078: Bip001 R UpperArm
-    100080: Bip001 Spine
-    100082: Bip001 Spine1
-    100084: Bone_hair_FC1
-    100086: Bone_hair_FC2
-    100088: Bone_hair_FL1
-    100090: Bone_hair_FL2
-    100092: Bone_hair_FR1
-    100094: Bone_hair_FR2
-    100096: Bone_Pony_Tail_L1
-    100098: Bone_Pony_Tail_L2
-    100100: Bone_Pony_Tail_L3
-    100102: Bone_Pony_Tail_R1
-    100104: Bone_Pony_Tail_R2
-    100106: Bone_Pony_Tail_R3
-    100108: Bone_Pony_Tail_Up_L1
-    100110: Bone_Pony_Tail_Up_L2
-    100112: Bone_Pony_Tail_Up_L3
-    100114: Bone_Pony_Tail_Up_R1
-    100116: Bone_Pony_Tail_Up_R2
-    100118: Bone_Pony_Tail_Up_R3
-    100120: Bone_skirt_BL1
-    100122: Bone_skirt_BR1
-    100124: Bone_skirt_FL1
-    100126: Bone_skirt_FR1
-    100128: //RootNode
-    100130: unitychan_body
-    100132: unitychan_eye
-    100134: unitychan_face
-    100136: unitychan_Fhair
-    100138: unitychan_Fhair2
-    100140: unitychan_head
-    400000: Bip001
-    400002: Bip001 Head
-    400004: Bip001 L Calf
-    400006: Bip001 L Clavicle
-    400008: Bip001 L Finger0
-    400010: Bip001 L Finger01
-    400012: Bip001 L Finger1
-    400014: Bip001 L Finger11
-    400016: Bip001 L Finger2
-    400018: Bip001 L Finger21
-    400020: Bip001 L Finger3
-    400022: Bip001 L Finger31
-    400024: Bip001 L Finger4
-    400026: Bip001 L Finger41
-    400028: Bip001 L Foot
-    400030: Bip001 L Forearm
-    400032: Bip001 L Hand
-    400034: Bip001 L Thigh
-    400036: Bip001 L Toe0
-    400038: Bip001 L UpperArm
-    400040: Bip001 Neck
-    400042: Bip001 Pelvis
-    400044: Bip001 R Calf
-    400046: Bip001 R Clavicle
-    400048: Bip001 R Finger0
-    400050: Bip001 R Finger01
-    400052: Bip001 R Finger1
-    400054: Bip001 R Finger11
-    400056: Bip001 R Finger2
-    400058: Bip001 R Finger21
-    400060: Bip001 R Finger3
-    400062: Bip001 R Finger31
-    400064: Bip001 R Finger4
-    400066: Bip001 R Finger41
-    400068: Bip001 R Foot
-    400070: Bip001 R Forearm
-    400072: Bip001 R Hand
-    400074: Bip001 R Thigh
-    400076: Bip001 R Toe0
-    400078: Bip001 R UpperArm
-    400080: Bip001 Spine
-    400082: Bip001 Spine1
-    400084: Bone_hair_FC1
-    400086: Bone_hair_FC2
-    400088: Bone_hair_FL1
-    400090: Bone_hair_FL2
-    400092: Bone_hair_FR1
-    400094: Bone_hair_FR2
-    400096: Bone_Pony_Tail_L1
-    400098: Bone_Pony_Tail_L2
-    400100: Bone_Pony_Tail_L3
-    400102: Bone_Pony_Tail_R1
-    400104: Bone_Pony_Tail_R2
-    400106: Bone_Pony_Tail_R3
-    400108: Bone_Pony_Tail_Up_L1
-    400110: Bone_Pony_Tail_Up_L2
-    400112: Bone_Pony_Tail_Up_L3
-    400114: Bone_Pony_Tail_Up_R1
-    400116: Bone_Pony_Tail_Up_R2
-    400118: Bone_Pony_Tail_Up_R3
-    400120: Bone_skirt_BL1
-    400122: Bone_skirt_BR1
-    400124: Bone_skirt_FL1
-    400126: Bone_skirt_FR1
-    400128: //RootNode
-    400130: unitychan_body
-    400132: unitychan_eye
-    400134: unitychan_face
-    400136: unitychan_Fhair
-    400138: unitychan_Fhair2
-    400140: unitychan_head
-    2100000: 03 - Default
-    4300000: unitychan_face
-    4300002: unitychan_Fhair2
-    4300004: unitychan_eye
-    4300006: unitychan_Fhair
-    4300008: unitychan_body
-    4300010: unitychan_head
-    7400000: Unity_Chan_Jump
-    9500000: //RootNode
-    13700000: unitychan_body
-    13700002: unitychan_eye
-    13700004: unitychan_face
-    13700006: unitychan_Fhair
-    13700008: unitychan_Fhair2
-    13700010: unitychan_head
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bip001
+  - first:
+      1: 100002
+    second: Bip001 Head
+  - first:
+      1: 100004
+    second: Bip001 L Calf
+  - first:
+      1: 100006
+    second: Bip001 L Clavicle
+  - first:
+      1: 100008
+    second: Bip001 L Finger0
+  - first:
+      1: 100010
+    second: Bip001 L Finger01
+  - first:
+      1: 100012
+    second: Bip001 L Finger1
+  - first:
+      1: 100014
+    second: Bip001 L Finger11
+  - first:
+      1: 100016
+    second: Bip001 L Finger2
+  - first:
+      1: 100018
+    second: Bip001 L Finger21
+  - first:
+      1: 100020
+    second: Bip001 L Finger3
+  - first:
+      1: 100022
+    second: Bip001 L Finger31
+  - first:
+      1: 100024
+    second: Bip001 L Finger4
+  - first:
+      1: 100026
+    second: Bip001 L Finger41
+  - first:
+      1: 100028
+    second: Bip001 L Foot
+  - first:
+      1: 100030
+    second: Bip001 L Forearm
+  - first:
+      1: 100032
+    second: Bip001 L Hand
+  - first:
+      1: 100034
+    second: Bip001 L Thigh
+  - first:
+      1: 100036
+    second: Bip001 L Toe0
+  - first:
+      1: 100038
+    second: Bip001 L UpperArm
+  - first:
+      1: 100040
+    second: Bip001 Neck
+  - first:
+      1: 100042
+    second: Bip001 Pelvis
+  - first:
+      1: 100044
+    second: Bip001 R Calf
+  - first:
+      1: 100046
+    second: Bip001 R Clavicle
+  - first:
+      1: 100048
+    second: Bip001 R Finger0
+  - first:
+      1: 100050
+    second: Bip001 R Finger01
+  - first:
+      1: 100052
+    second: Bip001 R Finger1
+  - first:
+      1: 100054
+    second: Bip001 R Finger11
+  - first:
+      1: 100056
+    second: Bip001 R Finger2
+  - first:
+      1: 100058
+    second: Bip001 R Finger21
+  - first:
+      1: 100060
+    second: Bip001 R Finger3
+  - first:
+      1: 100062
+    second: Bip001 R Finger31
+  - first:
+      1: 100064
+    second: Bip001 R Finger4
+  - first:
+      1: 100066
+    second: Bip001 R Finger41
+  - first:
+      1: 100068
+    second: Bip001 R Foot
+  - first:
+      1: 100070
+    second: Bip001 R Forearm
+  - first:
+      1: 100072
+    second: Bip001 R Hand
+  - first:
+      1: 100074
+    second: Bip001 R Thigh
+  - first:
+      1: 100076
+    second: Bip001 R Toe0
+  - first:
+      1: 100078
+    second: Bip001 R UpperArm
+  - first:
+      1: 100080
+    second: Bip001 Spine
+  - first:
+      1: 100082
+    second: Bip001 Spine1
+  - first:
+      1: 100084
+    second: Bone_hair_FC1
+  - first:
+      1: 100086
+    second: Bone_hair_FC2
+  - first:
+      1: 100088
+    second: Bone_hair_FL1
+  - first:
+      1: 100090
+    second: Bone_hair_FL2
+  - first:
+      1: 100092
+    second: Bone_hair_FR1
+  - first:
+      1: 100094
+    second: Bone_hair_FR2
+  - first:
+      1: 100096
+    second: Bone_Pony_Tail_L1
+  - first:
+      1: 100098
+    second: Bone_Pony_Tail_L2
+  - first:
+      1: 100100
+    second: Bone_Pony_Tail_L3
+  - first:
+      1: 100102
+    second: Bone_Pony_Tail_R1
+  - first:
+      1: 100104
+    second: Bone_Pony_Tail_R2
+  - first:
+      1: 100106
+    second: Bone_Pony_Tail_R3
+  - first:
+      1: 100108
+    second: Bone_Pony_Tail_Up_L1
+  - first:
+      1: 100110
+    second: Bone_Pony_Tail_Up_L2
+  - first:
+      1: 100112
+    second: Bone_Pony_Tail_Up_L3
+  - first:
+      1: 100114
+    second: Bone_Pony_Tail_Up_R1
+  - first:
+      1: 100116
+    second: Bone_Pony_Tail_Up_R2
+  - first:
+      1: 100118
+    second: Bone_Pony_Tail_Up_R3
+  - first:
+      1: 100120
+    second: Bone_skirt_BL1
+  - first:
+      1: 100122
+    second: Bone_skirt_BR1
+  - first:
+      1: 100124
+    second: Bone_skirt_FL1
+  - first:
+      1: 100126
+    second: Bone_skirt_FR1
+  - first:
+      1: 100128
+    second: //RootNode
+  - first:
+      1: 100130
+    second: unitychan_body
+  - first:
+      1: 100132
+    second: unitychan_eye
+  - first:
+      1: 100134
+    second: unitychan_face
+  - first:
+      1: 100136
+    second: unitychan_Fhair
+  - first:
+      1: 100138
+    second: unitychan_Fhair2
+  - first:
+      1: 100140
+    second: unitychan_head
+  - first:
+      4: 400000
+    second: Bip001
+  - first:
+      4: 400002
+    second: Bip001 Head
+  - first:
+      4: 400004
+    second: Bip001 L Calf
+  - first:
+      4: 400006
+    second: Bip001 L Clavicle
+  - first:
+      4: 400008
+    second: Bip001 L Finger0
+  - first:
+      4: 400010
+    second: Bip001 L Finger01
+  - first:
+      4: 400012
+    second: Bip001 L Finger1
+  - first:
+      4: 400014
+    second: Bip001 L Finger11
+  - first:
+      4: 400016
+    second: Bip001 L Finger2
+  - first:
+      4: 400018
+    second: Bip001 L Finger21
+  - first:
+      4: 400020
+    second: Bip001 L Finger3
+  - first:
+      4: 400022
+    second: Bip001 L Finger31
+  - first:
+      4: 400024
+    second: Bip001 L Finger4
+  - first:
+      4: 400026
+    second: Bip001 L Finger41
+  - first:
+      4: 400028
+    second: Bip001 L Foot
+  - first:
+      4: 400030
+    second: Bip001 L Forearm
+  - first:
+      4: 400032
+    second: Bip001 L Hand
+  - first:
+      4: 400034
+    second: Bip001 L Thigh
+  - first:
+      4: 400036
+    second: Bip001 L Toe0
+  - first:
+      4: 400038
+    second: Bip001 L UpperArm
+  - first:
+      4: 400040
+    second: Bip001 Neck
+  - first:
+      4: 400042
+    second: Bip001 Pelvis
+  - first:
+      4: 400044
+    second: Bip001 R Calf
+  - first:
+      4: 400046
+    second: Bip001 R Clavicle
+  - first:
+      4: 400048
+    second: Bip001 R Finger0
+  - first:
+      4: 400050
+    second: Bip001 R Finger01
+  - first:
+      4: 400052
+    second: Bip001 R Finger1
+  - first:
+      4: 400054
+    second: Bip001 R Finger11
+  - first:
+      4: 400056
+    second: Bip001 R Finger2
+  - first:
+      4: 400058
+    second: Bip001 R Finger21
+  - first:
+      4: 400060
+    second: Bip001 R Finger3
+  - first:
+      4: 400062
+    second: Bip001 R Finger31
+  - first:
+      4: 400064
+    second: Bip001 R Finger4
+  - first:
+      4: 400066
+    second: Bip001 R Finger41
+  - first:
+      4: 400068
+    second: Bip001 R Foot
+  - first:
+      4: 400070
+    second: Bip001 R Forearm
+  - first:
+      4: 400072
+    second: Bip001 R Hand
+  - first:
+      4: 400074
+    second: Bip001 R Thigh
+  - first:
+      4: 400076
+    second: Bip001 R Toe0
+  - first:
+      4: 400078
+    second: Bip001 R UpperArm
+  - first:
+      4: 400080
+    second: Bip001 Spine
+  - first:
+      4: 400082
+    second: Bip001 Spine1
+  - first:
+      4: 400084
+    second: Bone_hair_FC1
+  - first:
+      4: 400086
+    second: Bone_hair_FC2
+  - first:
+      4: 400088
+    second: Bone_hair_FL1
+  - first:
+      4: 400090
+    second: Bone_hair_FL2
+  - first:
+      4: 400092
+    second: Bone_hair_FR1
+  - first:
+      4: 400094
+    second: Bone_hair_FR2
+  - first:
+      4: 400096
+    second: Bone_Pony_Tail_L1
+  - first:
+      4: 400098
+    second: Bone_Pony_Tail_L2
+  - first:
+      4: 400100
+    second: Bone_Pony_Tail_L3
+  - first:
+      4: 400102
+    second: Bone_Pony_Tail_R1
+  - first:
+      4: 400104
+    second: Bone_Pony_Tail_R2
+  - first:
+      4: 400106
+    second: Bone_Pony_Tail_R3
+  - first:
+      4: 400108
+    second: Bone_Pony_Tail_Up_L1
+  - first:
+      4: 400110
+    second: Bone_Pony_Tail_Up_L2
+  - first:
+      4: 400112
+    second: Bone_Pony_Tail_Up_L3
+  - first:
+      4: 400114
+    second: Bone_Pony_Tail_Up_R1
+  - first:
+      4: 400116
+    second: Bone_Pony_Tail_Up_R2
+  - first:
+      4: 400118
+    second: Bone_Pony_Tail_Up_R3
+  - first:
+      4: 400120
+    second: Bone_skirt_BL1
+  - first:
+      4: 400122
+    second: Bone_skirt_BR1
+  - first:
+      4: 400124
+    second: Bone_skirt_FL1
+  - first:
+      4: 400126
+    second: Bone_skirt_FR1
+  - first:
+      4: 400128
+    second: //RootNode
+  - first:
+      4: 400130
+    second: unitychan_body
+  - first:
+      4: 400132
+    second: unitychan_eye
+  - first:
+      4: 400134
+    second: unitychan_face
+  - first:
+      4: 400136
+    second: unitychan_Fhair
+  - first:
+      4: 400138
+    second: unitychan_Fhair2
+  - first:
+      4: 400140
+    second: unitychan_head
+  - first:
+      21: 2100000
+    second: 03 - Default
+  - first:
+      43: 4300000
+    second: unitychan_face
+  - first:
+      43: 4300002
+    second: unitychan_Fhair2
+  - first:
+      43: 4300004
+    second: unitychan_eye
+  - first:
+      43: 4300006
+    second: unitychan_Fhair
+  - first:
+      43: 4300008
+    second: unitychan_body
+  - first:
+      43: 4300010
+    second: unitychan_head
+  - first:
+      74: 7400000
+    second: Unity_Chan_Jump
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: unitychan_body
+  - first:
+      137: 13700002
+    second: unitychan_eye
+  - first:
+      137: 13700004
+    second: unitychan_face
+  - first:
+      137: 13700006
+    second: unitychan_Fhair
+  - first:
+      137: 13700008
+    second: unitychan_Fhair2
+  - first:
+      137: 13700010
+    second: unitychan_head
   externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -171,6 +485,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -191,6 +506,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Unity_Chan_Jump
       takeName: Take 001
+      internalID: 0
       firstFrame: 0
       lastFrame: 45
       wrapMode: 0
@@ -199,8 +515,8 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
@@ -223,25 +539,34 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.001
-    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -250,10 +575,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: Bip001 Pelvis
       humanName: Hips
@@ -946,13 +1271,18 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 1
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
