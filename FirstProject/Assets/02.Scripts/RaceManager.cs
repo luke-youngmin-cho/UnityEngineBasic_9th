@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Playables;
 
 public class RaceManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Transform _standPoint1st;
     [SerializeField] private Transform _standPoint2nd;
     [SerializeField] private Transform _standPoint3rd;
-
+    [SerializeField] private PlayableDirector _director_GameFinished;
     public void Register(Horse horse)
     {
         horses.Add(horse);
@@ -52,5 +53,6 @@ public class RaceManager : MonoBehaviour
         arrived[2].transform.position = _standPoint3rd.position;
 
         arrived[0].GetComponent<Animator>().Play("Jump");
+        _director_GameFinished.Play();
     }
 }
