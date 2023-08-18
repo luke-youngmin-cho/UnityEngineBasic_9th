@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,10 +38,28 @@ public class GameManager : MonoBehaviour
             case State.Idle:
                 break;
             case State.LoadSongData:
+                {
+                    SongDataLoader.Load(SongSelectionUI.s_selected);
+                    state = State.WaitUntilSongDataLoaded;
+                }
                 break;
             case State.WaitUntilSongDataLoaded:
+                {
+                    if (SongDataLoader.isLoaded)
+                    {
+                        SceneManager.LoadScene("MusicPlay");
+                        state = State.StartPlay;
+                    }
+                }
                 break;
             case State.StartPlay:
+                {
+                    if (MusicPlayManager.instance != null)
+                    {
+                        MusicPlayManager.instance.StartMusicPlay();
+                        state = State.WaitUntilPlayFinished;
+                    }
+                }
                 break;
             case State.WaitUntilPlayFinished:
                 break;
