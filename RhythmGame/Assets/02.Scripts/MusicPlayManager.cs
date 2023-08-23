@@ -30,7 +30,18 @@ public class MusicPlayManager : MonoBehaviour
     public const int POINT_GOOD = 100;
     public const int POINT_MISS = 0;
     public const int POINT_BAD = -100;
-    public int point;
+    public int point
+    {
+        get => _point;
+        set
+        {
+            _point = value;
+            _scoringText.score = value;
+        }
+    }
+    private int _point;
+    [SerializeField] private ScoringText _scoringText;
+
     public int combo
     {
         get => _combo;
@@ -40,6 +51,7 @@ public class MusicPlayManager : MonoBehaviour
                 highestCombo = value;
 
             _combo = value;
+            _popUpTextManager.PopUpComboText(value);
         }
     }
     private int _combo;
@@ -51,6 +63,7 @@ public class MusicPlayManager : MonoBehaviour
         {
             point += (value - _coolCount) * POINT_COOL;
             combo += (value - _coolCount);
+            _popUpTextManager.PopUpHitJudgeText(HitJudge.Cool);
         }
     }
     public int greatCount
@@ -60,6 +73,7 @@ public class MusicPlayManager : MonoBehaviour
         {
             point += (value - _greatCount) * POINT_GREAT;
             combo += (value - _greatCount);
+            _popUpTextManager.PopUpHitJudgeText(HitJudge.Great);
         }
     }
     public int goodCount
@@ -69,6 +83,7 @@ public class MusicPlayManager : MonoBehaviour
         {
             point += (value - _goodCount) * POINT_GOOD;
             combo += (value - _goodCount);
+            _popUpTextManager.PopUpHitJudgeText(HitJudge.Good);
         }
     }
     public int missCount
@@ -78,6 +93,7 @@ public class MusicPlayManager : MonoBehaviour
         {
             point += (value - _missCount) * POINT_MISS;
             combo = 0;
+            _popUpTextManager.PopUpHitJudgeText(HitJudge.Miss);
         }
     }
     public int badCount
@@ -87,6 +103,7 @@ public class MusicPlayManager : MonoBehaviour
         {
             point += (value - _badCount) * POINT_BAD;
             combo = 0;
+            _popUpTextManager.PopUpHitJudgeText(HitJudge.Bad);
         }
     }
     private int _coolCount;
@@ -94,6 +111,8 @@ public class MusicPlayManager : MonoBehaviour
     private int _goodCount;
     private int _missCount;
     private int _badCount;
+
+    [SerializeField] private PopUpTextManager _popUpTextManager;
 
     private void Awake()
     {
