@@ -45,6 +45,9 @@ public class PopUpTextManager : MonoBehaviour
 
     public void PopUpComboText(int comboStack)
     {
+        if (comboStack < 2)
+            return;
+
         _comboTitle.PopUp();
         _comboStack.PopUp(comboStack.ToString());
     }
