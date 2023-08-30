@@ -45,9 +45,18 @@ public static class CharacterStateWorkflowsDataSheet
 
             switch (current)
             {
+                case 0:
+                    {
+                        machine.isDirectionChangeable = true;
+                        machine.isMovable = true;
+                        current++;
+                    }
+                    break;
                 default:
                     {
-                        // todo -> X 축 입력 절댓값이 0보다 크면 next = State.Move
+                        // X 축 입력 절댓값이 0보다 크면 next = State.Move
+                        if (Mathf.Abs(machine.horizontal) > 0)
+                            next = State.Move;
                         // todo -> Ground 가 감지되지 않으면 next = State.Fall
                     }
                     break;
@@ -59,7 +68,7 @@ public static class CharacterStateWorkflowsDataSheet
 
     public class Move : WorkflowBase
     {
-        public override State ID => State.Idle;
+        public override State ID => State.Move;
 
         public Move(CharacterMachine machine) : base(machine)
         {
@@ -71,9 +80,18 @@ public static class CharacterStateWorkflowsDataSheet
 
             switch (current)
             {
+                case 0:
+                    {
+                        machine.isDirectionChangeable = true;
+                        machine.isMovable = true;
+                        current++;
+                    }
+                    break;
                 default:
                     {
-                        // todo -> X 축 입력 절댓값이 0 이면 next = State.Idle
+                        // X 축 입력 절댓값이 0이면 next = State.Idle
+                        if (machine.horizontal == 0.0f)
+                            next = State.Idle;
                         // todo -> Ground 가 감지되지 않으면 next = State.Fall
                     }
                     break;
