@@ -12,4 +12,13 @@ public class PlayerMachine : CharacterMachine
     {
         Initialize(CharacterStateWorkflowsDataSheet.GetWorkflowsForPlayer(this));
     }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (Input.GetKey(KeyCode.C))
+        {
+            ChangeState(State.Jump);
+        }
+    }
 }

@@ -54,7 +54,7 @@ public abstract class CharacterMachine : MonoBehaviour
 
     public State current;
     private Dictionary<State, IWorkflow<State>> _states;
-
+    private bool _isDirty;
     public Animator animator;
 
     public bool isGrounded
@@ -80,11 +80,19 @@ public abstract class CharacterMachine : MonoBehaviour
 
     public bool ChangeState(State newState)
     {
+        if (_isDirty)
+            return false;
+
         if (newState == current)
+            return false;
+
+        if (_states[newState].CanExecute == false)
             return false;
 
         current = newState;
         _states[newState].Reset();
+        ChangeState(_states[newState].MoveNext());
+        _isDirty = true;
         return true;
     }
 
@@ -95,7 +103,7 @@ public abstract class CharacterMachine : MonoBehaviour
         direction = DIRECTION_RIGHT;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         ChangeState(_states[current].MoveNext());
 
@@ -111,11 +119,16 @@ public abstract class CharacterMachine : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
         _rigidbody.position += move * Time.fixedDeltaTime;
     }
 
+    private void LateUpdate()
+    {
+        _isDirty = false;
+    }
 
 
     private void OnDrawGizmos()
