@@ -1135,7 +1135,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!4 &939524356
 Transform:
@@ -1172,6 +1172,8 @@ MonoBehaviour:
   isMovable: 0
   current: 0
   animator: {fileID: 0}
+  hasJumped: 0
+  hasSecondJumped: 0
   _groundDetectCenter: {x: 0, y: -0.01}
   _groundDetectSize: {x: 0.08, y: 0.02}
   _groundMask:

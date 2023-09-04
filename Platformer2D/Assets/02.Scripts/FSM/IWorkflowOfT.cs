@@ -9,6 +9,8 @@ public interface IWorkflow<T>
     T ID { get; }
     bool CanExecute { get; }
     int Current { get; }
+    void OnEnter();
+    void OnExit();
     T MoveNext();
     void Reset();
 }
