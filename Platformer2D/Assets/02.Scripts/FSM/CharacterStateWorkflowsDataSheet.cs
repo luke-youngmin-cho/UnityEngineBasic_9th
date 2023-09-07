@@ -163,6 +163,94 @@ public static class CharacterStateWorkflowsDataSheet
             return next;
         }
     }
+    public class JumpDown : WorkflowBase
+    {
+        public override State ID => State.JumpDown;
+        public override bool CanExecute => base.CanExecute &&
+                                           machine.current == State.Crouch &&
+                                           machine.isGroundExistBelow;
+
+        private float _force;
+        private float _groundIgnoreTime;
+        private float _timeMark;
+        private Collider2D _ground;
+
+        public JumpDown(CharacterMachine machine, float force, float groundIgnoreTime) : base(machine)
+        {
+            _force = force;
+            _groundIgnoreTime = groundIgnoreTime;
+        }
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+            machine.isDirectionChangeable = true;
+            machine.isMovable = false;
+            _ground = machine.ground;
+            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0.0f);
+            rigidbody.AddForce(Vector2.up * _force, ForceMode2D.Impulse);
+            animator.Play("Jump");
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                Physics2D.IgnoreCollision(colliders[i], _ground, false);
+            }
+        }
+
+        public override State MoveNext()
+        {
+            State next = ID;
+
+            switch (current)
+            {
+                case 0:
+                    {
+                        for (int i = 0; i < colliders.Length; i++)
+                        {
+                            Physics2D.IgnoreCollision(colliders[i], _ground, true);
+                        }
+                        _timeMark = Time.time;
+                        current++;
+                    }
+                    break;
+                case 1:
+                    {
+                        if (rigidbody.velocity.y <= 0)
+                        {
+                            animator.Play("Fall");
+                            current++;
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        if (Time.time - _timeMark > _groundIgnoreTime)
+                        {
+                            for (int i = 0; i < colliders.Length; i++)
+                            {
+                                Physics2D.IgnoreCollision(colliders[i], _ground, false);
+                            }
+                            current++;
+                        }
+                    }
+                    break;
+                default:
+                    {
+                        if (rigidbody.velocity.y <= 0.0f)
+                        {
+                            next = machine.isGrounded ? State.Idle : State.Fall;
+                        }
+                    }
+                    break;
+            }
+
+            return next;
+        }
+    }
     public class SecondJump : WorkflowBase
     {
         public override State ID => State.SecondJump;
@@ -372,7 +460,8 @@ public static class CharacterStateWorkflowsDataSheet
         {
             { State.Idle, new Idle(machine) },
             { State.Move, new Move(machine) },
-            { State.Jump, new Jump(machine, 3.0f) },
+            { State.Jump, new Jump(machine, 3.5f) },
+            { State.JumpDown, new JumpDown(machine, 1.0f, 0.4f) },
             { State.SecondJump, new SecondJump(machine, 3.0f) },
             { State.Fall, new Fall(machine, 1.0f) },
             { State.Land, new Land(machine) },

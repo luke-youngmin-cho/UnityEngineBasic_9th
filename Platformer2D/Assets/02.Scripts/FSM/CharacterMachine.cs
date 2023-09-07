@@ -8,6 +8,7 @@ public enum State
     Idle,
     Move,
     Jump,
+    JumpDown,
     SecondJump,
     Fall,
     Land,
@@ -63,20 +64,15 @@ public abstract class CharacterMachine : MonoBehaviour
     public bool hasJumped;
     public bool hasSecondJumped;
 
-    public bool isGrounded
-    {
-        get
-        {
-            return Physics2D.OverlapBox(_rigidbody.position + _groundDetectCenter,
-                                        _groundDetectSize,
-                                        0.0f,
-                                        _groundMask);
-        }
-    }
+    public bool isGrounded { get; private set; }
+    public bool isGroundExistBelow { get; private set; }
+    public Collider2D ground { get; private set; }
     [Header("Ground Detection")]
     [SerializeField] private Vector2 _groundDetectCenter;
     [SerializeField] private Vector2 _groundDetectSize;
     [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private Vector2 _groundBelowDetectCenter;
+    [SerializeField] private float _groundBelowDetectDistance;
 
     public void Initialize(IEnumerable<KeyValuePair<State, IWorkflow<State>>> copy)
     {
@@ -129,6 +125,7 @@ public abstract class CharacterMachine : MonoBehaviour
     private void FixedUpdate()
     {
         _rigidbody.position += move * Time.fixedDeltaTime;
+        DetectGround();
     }
 
     private void LateUpdate()
@@ -136,11 +133,41 @@ public abstract class CharacterMachine : MonoBehaviour
         _isDirty = false;
     }
 
+    private void DetectGround()
+    {
+        ground = Physics2D.OverlapBox(_rigidbody.position + _groundDetectCenter,
+                                      _groundDetectSize,
+                                      0.0f,
+                                      _groundMask);
+
+        isGrounded = ground;
+
+        if (isGrounded)
+        {
+            RaycastHit2D hit =
+                Physics2D.BoxCast(origin: _rigidbody.position + _groundBelowDetectCenter,
+                                  size: _groundDetectSize,
+                                  angle: 0.0f,
+                                  direction: Vector2.down,
+                                  distance: _groundBelowDetectDistance,
+                                  layerMask: _groundMask);
+
+            isGroundExistBelow = hit.collider;
+        }
+        else
+        {
+            isGroundExistBelow = false;
+        }
+    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position + (Vector3)_groundDetectCenter,
                             _groundDetectSize);
+
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireCube(transform.position + (Vector3)_groundBelowDetectCenter + Vector3.down * _groundBelowDetectDistance / 2.0f,
+                            new Vector3(_groundDetectSize.x, _groundDetectSize.y + _groundBelowDetectDistance));
     }
 }

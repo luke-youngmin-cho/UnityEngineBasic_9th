@@ -18,6 +18,7 @@ public class PlayerMachine : CharacterMachine
         base.Update();
         if (Input.GetKeyDown(KeyCode.C))
         {
+            if (ChangeState(State.JumpDown) == false)
             if (ChangeState(State.Jump) == false)
                 ChangeState(State.SecondJump);
         }
