@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Ground
   - 
-  - 
+  - Ladder
   - 
   - PlayerTrigger
   - PlayerCollision
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ladder
+    uniqueID: 225959921
     locked: 0
   - name: Player
     uniqueID: 10488573
