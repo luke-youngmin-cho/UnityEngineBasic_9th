@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Ladder : MonoBehaviour
 {
     public Vector2 top => (Vector2)transform.position +
                           _bound.offset +
-                          Vector2.up *_bound.size.y / 2.0f;
+                          Vector2.up * _bound.size.y / 2.0f;
     public Vector2 bottom => (Vector2)transform.position +
                              _bound.offset +
                              Vector2.down * _bound.size.y / 2.0f;
 
 
-    public Vector2 upStartPos => bottom + 
+    public Vector2 upStartPos => bottom +
                                  Vector2.down * _upStartOffsetY;
     public Vector2 upEndPos => top +
                                Vector2.down * _upEndOffsetY;
@@ -40,15 +41,15 @@ public class Ladder : MonoBehaviour
             _bound = GetComponent<BoxCollider2D>();
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(Vector3.left  * 0.1f + (Vector3)upStartPos,
+        Gizmos.DrawLine(Vector3.left * 0.1f + (Vector3)upStartPos,
                         Vector3.right * 0.1f + (Vector3)upStartPos);
-        Gizmos.DrawLine(Vector3.left  * 0.1f + (Vector3)upEndPos,
+        Gizmos.DrawLine(Vector3.left * 0.1f + (Vector3)upEndPos,
                         Vector3.right * 0.1f + (Vector3)upEndPos);
 
         Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(Vector3.left  * 0.1f + (Vector3)downStartPos,
+        Gizmos.DrawLine(Vector3.left * 0.1f + (Vector3)downStartPos,
                         Vector3.right * 0.1f + (Vector3)downStartPos);
-        Gizmos.DrawLine(Vector3.left  * 0.1f + (Vector3)downEndPos,
+        Gizmos.DrawLine(Vector3.left * 0.1f + (Vector3)downEndPos,
                         Vector3.right * 0.1f + (Vector3)downEndPos);
     }
 }

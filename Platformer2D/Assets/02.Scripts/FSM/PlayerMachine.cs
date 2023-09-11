@@ -8,6 +8,12 @@ public class PlayerMachine : CharacterMachine
         set => base.horizontal = value; 
     }
 
+    public override float vertical
+    {
+        get => Input.GetAxisRaw("Vertical");
+        set => base.vertical = value; 
+    }
+
     private void Start()
     {
         Initialize(CharacterStateWorkflowsDataSheet.GetWorkflowsForPlayer(this));
@@ -23,9 +29,23 @@ public class PlayerMachine : CharacterMachine
                 ChangeState(State.SecondJump);
         }
 
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            if (canLadderUp)
+                ChangeState(State.LadderClimbing, new object[] { upLadder, DIRECTION_UP });
+        }
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            ChangeState(State.Crouch);
+            if (canLadderDown)
+                ChangeState(State.LadderClimbing, new object[] { downLadder, DIRECTION_DOWN });
+            else
+                ChangeState(State.Crouch);
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            if (canLadderDown)
+                ChangeState(State.LadderClimbing, new object[] { downLadder, DIRECTION_DOWN });
         }
         else if (Input.GetKeyUp(KeyCode.DownArrow))
         {

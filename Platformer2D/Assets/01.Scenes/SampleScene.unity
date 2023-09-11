@@ -511,9 +511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a75b1d6b67acd4aa085459536b0def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upStartOffsetY: 0.03
-  _upEndOffsetY: 0.03
-  _downStartOffsetY: 0.05
+  _upStartOffsetY: -0.05
+  _upEndOffsetY: 0.1
+  _downStartOffsetY: 0.2
   _downEndOffsetY: 0.05
 --- !u!61 &195337189
 BoxCollider2D:
@@ -1206,9 +1206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a75b1d6b67acd4aa085459536b0def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upStartOffsetY: 0.03
-  _upEndOffsetY: 0.03
-  _downStartOffsetY: 0.05
+  _upStartOffsetY: -0.05
+  _upEndOffsetY: 0.1
+  _downStartOffsetY: 0.2
   _downEndOffsetY: 0.05
 --- !u!61 &624245538
 BoxCollider2D:
