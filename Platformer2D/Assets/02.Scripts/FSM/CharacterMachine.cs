@@ -16,7 +16,8 @@ public enum State
     LadderClimbing,
     Ledge,
     LedgeClimb,
-    WallSlide
+    WallSlide,
+    Attack
 }
 
 public abstract class CharacterMachine : MonoBehaviour

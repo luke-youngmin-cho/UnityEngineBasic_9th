@@ -803,6 +803,101 @@ public static class CharacterStateWorkflowsDataSheet
         }
     }
 
+    public class Attack : WorkflowBase
+    {
+        public override State ID => State.Attack;
+
+        public override bool CanExecute
+        {
+            get
+            {
+                if (_combo > 0 &&
+                    Time.time - _exitTimeMark >= _comboResetTime)
+                {
+                    _combo = 0;
+                    _hasHit = false;
+                }
+
+                if (_combo > _comboMax)
+                {
+                    return false;
+                }
+
+
+                if (base.CanExecute &&
+                    ((_combo == 0) || (_combo > 0 && _hasHit)) &&
+                    (machine.current == State.Idle ||
+                     machine.current == State.Move ||
+                     machine.current == State.Jump ||
+                     machine.current == State.Fall ||
+                     machine.current == State.SecondJump))
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
+
+        private int _comboMax;
+        private int _combo;
+        private float _comboResetTime;
+        private float _exitTimeMark;
+        private bool _hasHit;
+        private AnimatorEvents _animatorEvents;
+
+        public Attack(CharacterMachine machine, int comboMax, float comboResetTime) : base(machine)
+        {
+            _comboMax = comboMax;
+            _comboResetTime = comboResetTime;
+            _animatorEvents = machine.GetComponentInChildren<AnimatorEvents>();
+            _animatorEvents.onAttackHit += () => _hasHit = true;
+        }
+
+        public override void OnEnter(object[] parameters)
+        {
+            base.OnEnter(parameters);
+            machine.isDirectionChangeable = false;
+            machine.isMovable = false;
+
+            if (machine.isGrounded)
+            {
+                machine.move = Vector2.zero;
+                rigidbody.velocity = Vector2.zero;
+            }
+
+            _hasHit = false;
+            animator.SetFloat("attackComboStack", _combo++);
+            animator.Play("Attack");
+        }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            _exitTimeMark = Time.time;
+        }
+
+        public override State OnUpdate()
+        {
+            State next = ID;
+
+            switch (current)
+            {
+                default:
+                    {
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                        {
+                            next = State.Idle;
+                        }
+                    }
+                    break;
+            }
+
+            return next;
+        }
+
+    }
     public static IEnumerable<KeyValuePair<State, IWorkflow<State>>> GetWorkflowsForPlayer(CharacterMachine machine)
     {
         return new Dictionary<State, IWorkflow<State>>()
@@ -818,7 +913,8 @@ public static class CharacterStateWorkflowsDataSheet
             { State.LadderClimbing, new LadderClimbing(machine, 1.0f) },
             { State.Ledge, new Ledge(machine) },
             { State.LedgeClimb, new LedgeClimb(machine) },
-            { State.WallSlide, new WallSlide(machine, 0.8f) }
+            { State.WallSlide, new WallSlide(machine, 0.8f) },
+            { State.Attack, new Attack(machine, 2, 0.3f) },
         };
     }
 
