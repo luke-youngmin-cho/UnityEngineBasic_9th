@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimatorEvents : MonoBehaviour
@@ -9,6 +7,7 @@ public class AnimatorEvents : MonoBehaviour
 
     private void AttackHit()
     {
+        Debug.Log("Hit");
         onAttackHit?.Invoke();
     }
 }

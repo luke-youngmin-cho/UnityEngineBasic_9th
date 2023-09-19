@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-08-30T11:11:17.238Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="SnfXWKpeXIKYwzTpNXv5" version="21.7.0" type="device">
+<mxfile host="app.diagrams.net" modified="2023-09-19T11:46:13.074Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="b-yV1-EfHwenViad4umF" version="21.7.1" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1877" dy="534" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1740" dy="464" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -297,13 +297,13 @@
         <mxCell id="bnlQOimCdnCWoGnJ-0to-100" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="bnlQOimCdnCWoGnJ-0to-98" vertex="1">
           <mxGeometry y="78" width="300" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="ZNiXKqvvG7-JJ7bFIcSB-0" value="+ Initialize(copy) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="bnlQOimCdnCWoGnJ-0to-98">
+        <mxCell id="ZNiXKqvvG7-JJ7bFIcSB-0" value="+ Initialize(copy) : void" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="bnlQOimCdnCWoGnJ-0to-98" vertex="1">
           <mxGeometry y="86" width="300" height="26" as="geometry" />
         </mxCell>
         <mxCell id="bnlQOimCdnCWoGnJ-0to-121" value="+ ChangeState(newState : State) : bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="bnlQOimCdnCWoGnJ-0to-98" vertex="1">
           <mxGeometry y="112" width="300" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="bnlQOimCdnCWoGnJ-0to-102" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="bnlQOimCdnCWoGnJ-0to-85" edge="1" source="bnlQOimCdnCWoGnJ-0to-98">
+        <mxCell id="bnlQOimCdnCWoGnJ-0to-102" value="1" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="bnlQOimCdnCWoGnJ-0to-98" target="bnlQOimCdnCWoGnJ-0to-85" edge="1">
           <mxGeometry x="-0.4177" y="10" relative="1" as="geometry">
             <mxPoint x="1000" y="273" as="sourcePoint" />
             <mxPoint x="1220" y="374" as="targetPoint" />
@@ -327,6 +327,9 @@
         </mxCell>
         <mxCell id="GsF63oC_604vNOR1dG97-14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="GsF63oC_604vNOR1dG97-13" vertex="1">
           <mxGeometry y="42" width="160" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="i8r1jTOne4frq4C4r5RT-0" value="«interface»&lt;br&gt;&lt;b&gt;IHp&lt;br&gt;&lt;br&gt;{get} hpValue&lt;br&gt;{get} hpMax&lt;br&gt;{get} hpMin&lt;br&gt;&lt;br&gt;RecoverHp(subject : object, amount: float)&lt;br&gt;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;DepleteHp(subject : object, amount: float)&lt;br&gt;&lt;/b&gt;&lt;b&gt;&lt;br&gt;&amp;lt;&amp;lt;event&amp;gt;&amp;gt; onHpChanged : Action&amp;lt;float&amp;gt;&lt;br&gt;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&amp;lt;&amp;lt;event&amp;gt;&amp;gt;&lt;/b&gt;&lt;b&gt;&amp;nbsp;onHpRecovered : Action&amp;lt;float&amp;gt;&lt;br&gt;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&amp;lt;&amp;lt;event&amp;gt;&amp;gt;&lt;/b&gt;&lt;b&gt;&amp;nbsp;onHpDepleted : Action&amp;lt;float&amp;gt;&lt;br&gt;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&amp;lt;&amp;lt;event&amp;gt;&amp;gt;&lt;/b&gt;&lt;b&gt;&amp;nbsp;onHpMax : Action&lt;br&gt;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;&amp;lt;&amp;lt;event&amp;gt;&amp;gt;&lt;/b&gt;&lt;b&gt;&amp;nbsp;onHpMin : Action&lt;br&gt;&lt;/b&gt;" style="html=1;whiteSpace=wrap;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1710" y="60" width="270" height="260" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
