@@ -2450,7 +2450,9 @@ MonoBehaviour:
   _wallMask:
     serializedVersion: 2
     m_Bits: 64
-  _hpMax: 500
+  _hpMax: 1
+  attackForceMin: 20
+  attackForceMax: 30
 --- !u!1 &1093943257
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,7 +4134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDirectionChangeable: 0
-  speed: 0.5
+  speed: 0.2
   move: {x: 0, y: 0}
   isMovable: 0
   current: 0
@@ -4170,6 +4172,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _hpMax: 100
+  attackForceMin: 5
+  attackForceMax: 12
   _ai: 0
   _autoFollow: 1
   _targetDetectRange: 1.5

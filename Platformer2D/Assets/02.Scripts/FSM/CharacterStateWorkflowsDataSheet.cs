@@ -962,6 +962,7 @@ public static class CharacterStateWorkflowsDataSheet
         public override void OnEnter(object[] parameters)
         {
             base.OnEnter(parameters);
+            machine.isInvincible = true;
             machine.isDirectionChangeable = false;
             machine.isMovable = false;
             machine.move = Vector2.zero;
@@ -977,6 +978,11 @@ public static class CharacterStateWorkflowsDataSheet
             {
                 default:
                     {
+                        Debug.Log($"Die..{animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
+                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                        {
+                            GameObject.Destroy(machine.gameObject);
+                        }
                     }
                     break;
             }
@@ -1002,6 +1008,8 @@ public static class CharacterStateWorkflowsDataSheet
             { State.LedgeClimb, new LedgeClimb(machine) },
             { State.WallSlide, new WallSlide(machine, 0.8f) },
             { State.Attack, new Attack(machine, 2, 0.3f) },
+            { State.Hurt, new Hurt(machine) },
+            { State.Die, new Die(machine) },
         };
     }
 
@@ -1011,7 +1019,7 @@ public static class CharacterStateWorkflowsDataSheet
         {
             { State.Idle, new Idle(machine) },
             { State.Move, new Move(machine) },
-            { State.Jump, new Jump(machine, 3.5f) },
+            { State.Jump, new Jump(machine, 2.0f) },
             { State.JumpDown, new JumpDown(machine, 1.0f, 0.4f) },
             { State.SecondJump, new SecondJump(machine, 3.0f) },
             { State.Fall, new Fall(machine, 1.0f) },
@@ -1022,6 +1030,8 @@ public static class CharacterStateWorkflowsDataSheet
             { State.LedgeClimb, new LedgeClimb(machine) },
             { State.WallSlide, new WallSlide(machine, 0.8f) },
             { State.Attack, new Attack(machine, 0, 0.0f) },
+            { State.Hurt, new Hurt(machine) },
+            { State.Die, new Die(machine) },
         };
     }
 }

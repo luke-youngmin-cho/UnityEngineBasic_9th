@@ -114,6 +114,8 @@ public abstract class CharacterMachine : MonoBehaviour, IHp
     [SerializeField] private float _wallDetectDistance;
     [SerializeField] private LayerMask _wallMask;
 
+
+    public bool isInvincible { get; set; }
     // Hp
     public float hpValue
     {
@@ -151,6 +153,9 @@ public abstract class CharacterMachine : MonoBehaviour, IHp
     public event Action onHpMax;
     public event Action onHpMin;
 
+    public float attackForceMin;
+    public float attackForceMax;
+
     public void Initialize(IEnumerable<KeyValuePair<State, IWorkflow<State>>> copy)
     {
         _states = new Dictionary<State, IWorkflow<State>>(copy);
@@ -176,7 +181,13 @@ public abstract class CharacterMachine : MonoBehaviour, IHp
         return true;
     }
 
-    private void Awake()
+    public void KnockBack(Vector2 force)
+    {
+        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.AddForce(force, ForceMode2D.Impulse);
+    }
+
+    protected virtual void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -317,6 +328,9 @@ public abstract class CharacterMachine : MonoBehaviour, IHp
 
     public void DepleteHp(object subject, float amount)
     {
+        if (isInvincible)
+            return;
+
         if (amount <= 0)
             return;
 

@@ -2,6 +2,7 @@ using System;
 
 public interface IHp
 {
+    bool isInvincible { get; }
     float hpValue { get; }
     float hpMax { get; }
 
