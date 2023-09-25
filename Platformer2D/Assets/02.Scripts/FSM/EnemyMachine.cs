@@ -37,7 +37,12 @@ public class EnemyMachine : CharacterMachine
     {
         Initialize(CharacterStateWorkflowsDataSheet.GetWorkflowsForEnemy(this));
         onHpDepleted += (amount) => ChangeState(State.Hurt);
-        onHpMin += () => ChangeState(State.Die);
+        onHpMin += () =>
+        {
+            _ai = AI.None;
+            move = Vector2.zero;
+            ChangeState(State.Die);
+        };
         _ai = AI.Think;
     }
 
