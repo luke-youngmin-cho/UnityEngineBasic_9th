@@ -933,8 +933,12 @@ public static class CharacterStateWorkflowsDataSheet
                     if (target == null)
                         continue;
 
-                    target.DepleteHp(machine, Random.Range(machine.attackForceMin, machine.attackForceMax) * _attackSettings[_combo - 1].damageGain);
+                    float damage = Random.Range(machine.attackForceMin, machine.attackForceMax) * _attackSettings[_combo - 1].damageGain;
+                    target.DepleteHp(machine, damage);
                     target.KnockBack(new Vector2(machine.direction, 0.0f));
+                    DamagePopUp.Create(target.transform.position + Vector3.up * 0.5f,
+                                       (int)damage,
+                                       machine.gameObject.layer);
                 }
                 _hasHit = true;
             };
@@ -1146,9 +1150,9 @@ public static class CharacterStateWorkflowsDataSheet
             { State.WallSlide, new WallSlide(machine, 0.8f) },
             { State.Attack, new Attack(machine, 2, 0.3f, new Attack.AttackSetting[3]
             {
-                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.0f, 1<<LayerMask.NameToLayer("EnemyTrigger"),2, 0.8f),
-                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.0f, 1<<LayerMask.NameToLayer("EnemyTrigger"),2, 0.95f),
-                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.2f, 1<<LayerMask.NameToLayer("EnemyTrigger"),2, 1.3f),
+                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.0f, 1<<LayerMask.NameToLayer("EnemyTrigger"),4, 0.8f),
+                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.0f, 1<<LayerMask.NameToLayer("EnemyTrigger"),5, 0.95f),
+                new Attack.AttackSetting(new Vector2(0.2f, 0.18f), new Vector2(0.5f, 0.6f),0.2f, 1<<LayerMask.NameToLayer("EnemyTrigger"),8, 1.3f),
             }) },
             { State.Hurt, new Hurt(machine) },
             { State.Die, new Die(machine) },
