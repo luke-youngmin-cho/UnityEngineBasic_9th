@@ -18,7 +18,7 @@ public class MiniStatusUI : MonoBehaviour
         CharacterMachine machine = GetComponentInParent<CharacterMachine>();
         machine.onDirectionChanged += (direction) =>
         {
-            transform.eulerAngles = direction > 0 ? Vector3.zero : new Vector3(0.0f, 180.0f, 0.0f);
+            transform.eulerAngles = Vector2.zero;
         };
     }
 }

@@ -1115,19 +1115,6 @@ public static class CharacterStateWorkflowsDataSheet
             if (next == State.None)
                 return ID;
 
-            switch (current)
-            {
-                default:
-                    {
-                        Debug.Log($"Die..{animator.GetCurrentAnimatorStateInfo(0).normalizedTime}");
-                        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-                        {
-                            GameObject.Destroy(machine.gameObject);
-                        }
-                    }
-                    break;
-            }
-
             return next;
         }
     }

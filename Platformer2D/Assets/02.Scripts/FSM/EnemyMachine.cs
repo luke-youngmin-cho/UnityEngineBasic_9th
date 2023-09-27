@@ -3,13 +3,18 @@ using UnityEngine;
 
 public class EnemyMachine : CharacterMachine
 {
-    private enum AI
+    public enum AI
     {
         None,
         Think,
         ExecuteRandomBehaviour,
         WaitUntilRandomBehaviourFinished,
         Follow,
+    }
+    public AI ai
+    {
+        get => _ai;
+        set => _ai = value;
     }
     [SerializeField] private AI _ai;
     private Transform _target;
