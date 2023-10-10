@@ -1206,6 +1206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 784719695}
   - component: {fileID: 777162861}
+  - component: {fileID: 784719696}
   m_Layer: 0
   m_Name: PC01_Kohaku
   m_TagString: Untagged
@@ -2458,6 +2459,20 @@ Transform:
   - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 63.805, z: 0}
+--- !u!114 &784719696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784410279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c481591e1f44045ade2eb323b247c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateLayerMaskData: {fileID: 11400000, guid: 12acde6db7ebfe949a5d495fb3d28ed5,
+    type: 2}
 --- !u!4 &784720413
 Transform:
   m_ObjectHideFlags: 0
