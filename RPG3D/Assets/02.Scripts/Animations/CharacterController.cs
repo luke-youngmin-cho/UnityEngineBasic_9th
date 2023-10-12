@@ -12,8 +12,31 @@ public enum State
     Attack = 20,
 }
 
-public class CharacterController : MonoBehaviour
+public abstract class CharacterController : MonoBehaviour
 {
+    public abstract float horizontal { get; }
+    public abstract float vertical { get; }
+    public abstract float moveGain { get; }
+
+    public Vector3 move;
+    public bool isMovable
+    {
+        get
+        {
+            if (states[0] != State.Move)
+                return false;
+
+            for (int i = 1; i < states.Length; i++)
+            {
+                if (states[i] != State.None)
+                    return false;
+            }
+
+            return true;
+        }
+    }
+
+
     public State[] states;
     private Animator _animator;
     [SerializeField] private StateLayerMaskData _stateLayerMaskData;
@@ -35,15 +58,15 @@ public class CharacterController : MonoBehaviour
         states = new State[layers.Length - 1];
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (isMovable)
         {
-            if (isComboAvailable)
-                ChangeStateForcely(State.Attack);
-            else if (comboMax == 0)
-                ChangeState(State.Attack);
+            move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
         }
+        _animator.SetFloat("h", horizontal * moveGain);
+        _animator.SetFloat("v", vertical * moveGain);
+
 
         if (comboResetTimer > 0.0f)
         {
@@ -54,6 +77,11 @@ public class CharacterController : MonoBehaviour
                 ResetCombo();
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        transform.Translate(move * Time.fixedDeltaTime, Space.Self);
     }
 
 
