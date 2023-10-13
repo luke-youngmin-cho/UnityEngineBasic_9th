@@ -1,5 +1,8 @@
 using System;
+using Unity.AI.Navigation;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum State
 {
@@ -45,8 +48,15 @@ public abstract class CharacterController : MonoBehaviour
     public int comboMax;
     public int comboStack;
 
+    [SerializeField] private float _groundDetectRadius;
+    private Vector3 _inertia;
+    [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private float _slope = 45.0f;
+    private Rigidbody _rigidbody;
+
     private void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
         BehaviourBase[] behaviours = _animator.GetBehaviours<BehaviourBase>();
         for (int i = 0; i < behaviours.Length; i++)
@@ -61,7 +71,7 @@ public abstract class CharacterController : MonoBehaviour
     protected virtual void Update()
     {
         if (isMovable)
-        {
+        { 
             move = new Vector3(horizontal, 0.0f, vertical).normalized * moveGain;
         }
         _animator.SetFloat("h", horizontal * moveGain);
@@ -81,7 +91,47 @@ public abstract class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.Translate(move * Time.fixedDeltaTime, Space.Self);
+        if (DetectGround())
+            _inertia.y = 0.0f;
+        else
+            _inertia.y += Physics.gravity.y * Time.fixedDeltaTime;
+
+        if (_inertia.magnitude > 0.0f)
+            transform.Translate(_inertia * Time.fixedDeltaTime);
+
+        Vector3 expected = transform.position
+                           + Quaternion.LookRotation(transform.forward, Vector3.up) * move * Time.fixedDeltaTime;
+        float distanceExpected = Vector3.Distance(transform.position, expected);
+
+        Debug.DrawRay(expected + Vector3.up,
+                      Vector3.down * (1.0f + Mathf.Tan(_slope) * distanceExpected),
+                      Color.red);
+
+        if (Physics.Raycast(expected + Vector3.up,
+                            Vector3.down,
+                            out RaycastHit hit,
+                            1.0f + Mathf.Tan(_slope) * distanceExpected,
+                            _groundMask))
+        {
+            // 45도 슬로프 검증
+            if (hit.point.y < transform.position.y + Mathf.Tan(_slope) * distanceExpected)
+            {
+                expected = new Vector3(expected.x, hit.point.y, expected.z);
+                transform.position = expected;
+                //if (NavMesh.SamplePosition(expected, out NavMeshHit navMeshHit, float.PositiveInfinity, NavMesh.AllAreas))
+                //{
+                //    transform.position = navMeshHit.position;
+                //}
+            }
+        }
+
+    }
+
+    private bool DetectGround()
+    {
+        Collider[] cols 
+            = Physics.OverlapSphere(transform.position, _groundDetectRadius, _groundMask);
+        return cols.Length > 0;
     }
 
 
@@ -155,5 +205,11 @@ public abstract class CharacterController : MonoBehaviour
         {
             ResetCombo();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, _groundDetectRadius);
     }
 }

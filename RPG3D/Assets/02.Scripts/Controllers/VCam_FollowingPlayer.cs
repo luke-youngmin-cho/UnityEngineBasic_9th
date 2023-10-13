@@ -36,9 +36,9 @@ public class VCam_FollowingPlayer : MonoBehaviour
 
         _followTargetRoot.Rotate(Vector3.up, mouseX * _rotateSpeedY * Time.deltaTime, Space.World);
         _followTarget.Rotate(Vector3.left, mouseY * _rotateSpeedX * Time.deltaTime, Space.Self);
-        _followTarget.eulerAngles = new Vector3(ClampAngle(_followTarget.eulerAngles.x, _angleXMin, _angleXMax),
-                                                _followTarget.eulerAngles.y,
-                                                0.0f);
+        _followTarget.localRotation = Quaternion.Euler(ClampAngle(_followTarget.eulerAngles.x, _angleXMin, _angleXMax),
+                                                       0.0f,
+                                                       0.0f);
 
         if (Mathf.Abs(Input.mouseScrollDelta.y) > _scrollThreshold)
         {

@@ -775,7 +775,7 @@ Transform:
   m_GameObject: {fileID: 650532171}
   serializedVersion: 2
   m_LocalRotation: {x: 0.009998539, y: 0, z: 0, w: 0.99995005}
-  m_LocalPosition: {x: 86.77, y: 11.438173, z: 136.95}
+  m_LocalPosition: {x: 86.77, y: 12.660001, z: 136.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1233,7 +1233,9 @@ GameObject:
   - component: {fileID: 784719695}
   - component: {fileID: 777162861}
   - component: {fileID: 784719696}
-  m_Layer: 0
+  - component: {fileID: 784719699}
+  - component: {fileID: 784719698}
+  m_Layer: 10
   m_Name: PC01_Kohaku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2476,7 +2478,7 @@ Transform:
   m_GameObject: {fileID: 784410279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 86.77, y: 9.998173, z: 141.95}
+  m_LocalPosition: {x: 86.77, y: 11.22, z: 141.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2505,6 +2507,61 @@ MonoBehaviour:
   isComboAvailable: 0
   comboMax: 0
   comboStack: 0
+  _groundDetectRadius: 0.1
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _slope: 45
+--- !u!136 &784719698
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784410279}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!54 &784719699
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784410279}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!4 &784720413
 Transform:
   m_ObjectHideFlags: 0
@@ -2733,7 +2790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1008136038}
   - component: {fileID: 1008136037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: NavigationSurface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2963,9 +3020,9 @@ MonoBehaviour:
   _angleXMin: -8
   _angleXMax: 45
   _fovMin: 3
-  _fovMax: 30
+  _fovMax: 70
   _scrollThreshold: 0.2
-  _scrollSpeed: 10
+  _scrollSpeed: 200
 --- !u!114 &1601501880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3014,7 +3071,7 @@ Transform:
   m_GameObject: {fileID: 1601501878}
   serializedVersion: 2
   m_LocalRotation: {x: 0.009998539, y: 0, z: 0, w: 0.99995005}
-  m_LocalPosition: {x: 86.77, y: 11.438173, z: 136.95}
+  m_LocalPosition: {x: 86.77, y: 12.660001, z: 136.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
