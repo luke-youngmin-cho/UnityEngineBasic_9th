@@ -6,6 +6,10 @@ namespace RPG.AISystems.BehaviourTree
 	{
 		public Node child { get; set; }
 
+		protected Decorator(BlackBoard blackBoard) : base(blackBoard)
+		{
+		}
+
 		public override Result Invoke()
 		{
 			return Decorate();

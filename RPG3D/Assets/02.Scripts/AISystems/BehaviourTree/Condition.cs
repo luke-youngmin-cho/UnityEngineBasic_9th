@@ -7,7 +7,8 @@ namespace RPG.AISystems.BehaviourTree
 		public Node child { get; set; }
 		private Func<bool> _func;
 
-		public Condition(Func<bool> func)
+		public Condition(BlackBoard blackBoard, Func<bool> func)
+			: base(blackBoard)
 		{
 			_func = func;
 		}
@@ -15,7 +16,9 @@ namespace RPG.AISystems.BehaviourTree
 		public override Result Invoke()
 		{
 			if (_func.Invoke())
-				return child.Invoke();
+			{
+				return Result.Success;
+			}
 
 			return Result.Failure;
 		}

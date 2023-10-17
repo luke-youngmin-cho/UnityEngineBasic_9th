@@ -4,9 +4,13 @@ namespace RPG.AISystems.BehaviourTree
 	{
 		public Node child { get; set; }
 
+		public Root(BlackBoard blackBoard) : base(blackBoard)
+		{
+		}
+
 		public override Result Invoke()
 		{
-			return child.Invoke();
+			return Result.Success;
 		}
 	}
 }
