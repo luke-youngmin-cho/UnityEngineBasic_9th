@@ -8,6 +8,7 @@ namespace RPG.AISystems.BehaviourTree
 
 		protected Composite(BlackBoard blackBoard) : base(blackBoard)
 		{
+			children = new List<Node>();
 		}
 
 		public List<Node> children { get; set; }

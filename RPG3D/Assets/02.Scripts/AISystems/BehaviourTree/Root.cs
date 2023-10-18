@@ -10,6 +10,7 @@ namespace RPG.AISystems.BehaviourTree
 
 		public override Result Invoke()
 		{
+			owner.stack.Push(child);
 			return Result.Success;
 		}
 	}

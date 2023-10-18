@@ -23,7 +23,11 @@ namespace RPG.AISystems.BehaviourTree
 				if (i < currentIndex)
 					continue;
 
+				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+
 				result = children[i].Invoke();
+
+				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
 
 				switch (result)
 				{
@@ -35,14 +39,14 @@ namespace RPG.AISystems.BehaviourTree
 						return Result.Success;
 					case Result.Running:
 						owner.stack.Push(children[i]);
-						break;
+						return Result.Running;
 					default:
 						break;
 				}
 			}
 
 			currentIndex = 0;
-			return Result.Failure;
+			return result;
 		}
 	}
 }

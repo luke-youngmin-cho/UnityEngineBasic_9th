@@ -54,7 +54,7 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] private float _slope = 45.0f;
     private Rigidbody _rigidbody;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();

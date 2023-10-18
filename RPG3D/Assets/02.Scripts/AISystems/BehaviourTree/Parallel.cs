@@ -11,6 +11,7 @@ namespace RPG.AISystems.BehaviourTree
 			RequireAll,
 		}
 		private Policy _successPolicy;
+		private int successCount;
 
 		public Parallel(BlackBoard blackBoard, Policy successPolicy)
 			: base(blackBoard)
@@ -20,15 +21,37 @@ namespace RPG.AISystems.BehaviourTree
 
 		public override Result Invoke()
 		{
-			int successCount = 0;
 			Result result = Result.Failure;
-			foreach (var child in children)
+
+			for (int i = 0; i < children.Count; i++)
 			{
-				result = child.Invoke();
-				if (result == Result.Success)
-					successCount++;
+				if (i < currentIndex)
+					continue;
+
+				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+
+				result = children[i].Invoke();
+
+				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
+
+				switch (result)
+				{
+					case Result.Failure:
+						break;
+					case Result.Success:
+						successCount++;
+						break;
+					case Result.Running:
+						owner.stack.Push(children[i]);
+						return Result.Running;
+					default:
+						break;
+				}
+				currentIndex++;
 			}
 
+			currentIndex = 0;
+			successCount = 0;
 			switch (_successPolicy)
 			{
 				case Policy.RequireOne:

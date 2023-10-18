@@ -17,7 +17,12 @@ namespace RPG.AISystems.BehaviourTree
 		{
 			if (_func.Invoke())
 			{
-				return Result.Success;
+				//owner.stack.Push(child);
+				//return Result.Success;
+				UnityEngine.Debug.Log($"[Tree] : Invoking ... {child}");
+				Result result = child.Invoke();
+				UnityEngine.Debug.Log($"[Tree] : Invoked ... {child}, result : {result}");
+				return result;
 			}
 
 			return Result.Failure;

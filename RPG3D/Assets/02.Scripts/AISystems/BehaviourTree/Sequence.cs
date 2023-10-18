@@ -13,13 +13,35 @@ namespace RPG.AISystems.BehaviourTree
 		public override Result Invoke()
 		{
 			Result result = Result.Success;
-			foreach (var child in children)
+
+			for (int i = 0; i < children.Count; i++)
 			{
-				result = child.Invoke();
-				if (result != Result.Success)
-					return result;
+				if (i < currentIndex)
+					continue;
+
+				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+
+				result = children[i].Invoke();
+
+				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
+
+				switch (result)
+				{
+					case Result.Failure:
+						currentIndex = 0;
+						return Result.Failure;
+					case Result.Success:
+						currentIndex++;
+						break;
+					case Result.Running:
+						owner.stack.Push(children[i]);
+						return Result.Running;
+					default:
+						break;
+				}
 			}
 
+			currentIndex = 0;
 			return result;
 		}
 	}
