@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,5 +52,102 @@ namespace RPG.AISystems.BehaviourTree
 
 			_isTicking = false;
 		}
+
+
+		#region Build
+		private Node _current;
+		private Stack<Composite> _compositeStack;
+
+		public Tree StartBuild()
+		{
+			_root = new Root(blackBoard);
+			_current = _root;
+			_compositeStack = new Stack<Composite>();
+			return this;
+		}
+
+		public Tree Selector()
+		{
+			Composite node = new Selector(blackBoard);
+			Attach(_current, node);
+			_compositeStack.Push(node);
+			_current = node;
+			return this;
+		}
+
+		public Tree Sequence()
+		{
+			Composite node = new Sequence(blackBoard);
+			Attach(_current, node);
+			_compositeStack.Push(node);
+			_current = node;
+			return this;
+		}
+
+		public Tree Parallel(Parallel.Policy successPolicy)
+		{
+			Composite node = new Parallel(blackBoard, successPolicy);
+			Attach(_current, node);
+			_compositeStack.Push(node);
+			_current = node;
+			return this;
+		}
+
+		public Tree Condition(Func<bool> func)
+		{
+			Node node = new Condition(blackBoard, func);
+			Attach(_current, node);
+			_current = node;
+			return this;
+		}
+
+		public Tree Execution(Func<Result> func)
+		{
+			Node node = new Execution(blackBoard, func);
+			Attach(_current, node);
+			_current = _compositeStack.Count > 0 ? _compositeStack.Peek() : null;
+			return this;
+		}
+
+		public Tree Seek(float radius, float angle, LayerMask targetMask, Vector3 offset)
+		{
+			Node node = new Seek(blackBoard, radius, angle, targetMask, offset);
+			Attach(_current, node);
+			_current = _compositeStack.Count > 0 ? _compositeStack.Peek() : null;
+			return this;
+		}
+
+		public void Attach(Node parent, Node child)
+		{
+			if (parent is IParentOfChild)
+			{
+				((IParentOfChild)parent).child = child;
+			}
+			else if (parent is IParentOfChildren)
+			{
+				((IParentOfChildren)parent).children.Add(child);
+			}
+			else
+			{
+				throw new System.Exception($"[Tree] : You cannot attach child to {parent.GetType()}");
+			}
+		}
+
+		public Tree ExitCurrentComposite()
+		{
+			if (_compositeStack.Count > 0)
+			{
+				_compositeStack.Pop();
+				_current = _compositeStack.Count > 0 ? _compositeStack.Peek() : null;
+			}
+			else
+			{
+				throw new Exception($"[Tree] : Failed to exit composite. stack is empty");
+			}
+			return this;
+		}
+
+
+		#endregion
 	}
 }
