@@ -54,6 +54,14 @@ public abstract class CharacterController : MonoBehaviour
     [SerializeField] private float _slope = 45.0f;
     private Rigidbody _rigidbody;
 
+
+	public virtual bool useAI
+	{
+		get => _useAI;
+		set => _useAI = value;
+	}
+	[SerializeField] private bool _useAI;
+
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -89,8 +97,11 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
+		if (_useAI)
+			return;
+
         if (DetectGround())
             _inertia.y = 0.0f;
         else
@@ -207,7 +218,7 @@ public abstract class CharacterController : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, _groundDetectRadius);
