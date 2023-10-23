@@ -22,7 +22,7 @@ public class EnemyController : CharacterController
 	[SerializeField] private float _seekAngle;
 	[SerializeField] private LayerMask _seekMask;
 	[SerializeField] private Vector3 _seekOffset;
-
+	[SerializeField] private float _attackRange;
 
 	private void Start()
 	{
@@ -40,7 +40,14 @@ public class EnemyController : CharacterController
 
 		aiTree = GetComponent<Tree>();
 		aiTree.StartBuild()
-			.Seek(_seekRadius, _seekAngle, _seekMask, _seekOffset);
+			.Sequence()
+				.Seek(_seekRadius, _seekAngle, _seekMask, _seekOffset)
+				.Condition(() =>
+				{
+					return Vector3.Distance(transform.position, aiTree.blackBoard.target.position) <= _attackRange;
+				})
+					.Attack();
+				
 	}
 
 
