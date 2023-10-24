@@ -75,6 +75,7 @@ public abstract class CharacterController : MonoBehaviour
 
         Array layers = Enum.GetValues(typeof(AnimatorLayers));
         states = new State[layers.Length - 1];
+		ChangeStateForcely(State.Move);
     }
 
     protected virtual void Update()

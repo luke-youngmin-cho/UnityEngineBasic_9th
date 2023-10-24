@@ -10,6 +10,7 @@ namespace RPG.AISystems.BehaviourTree
 		public Transform transform;
 		public NavMeshAgent agent;
 		public CharacterController controller;
+		public Vector3 spawnedPosition;
 
 		// Target
 		public Transform target;
@@ -20,6 +21,7 @@ namespace RPG.AISystems.BehaviourTree
 			this.transform = owner.transform;
 			this.agent = owner.GetComponent<NavMeshAgent>();
 			this.controller = owner.GetComponent<CharacterController>();
+			this.spawnedPosition = transform.position;
 		}
 	}
 }

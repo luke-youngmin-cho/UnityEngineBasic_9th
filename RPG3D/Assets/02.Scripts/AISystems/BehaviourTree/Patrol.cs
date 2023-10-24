@@ -41,15 +41,17 @@ namespace RPG.AISystems.BehaviourTree
 							_period = Random.Range(_periodMin, _periodMax);
 							if (_behaviour == 1)
 							{
-								Vector3 expected = blackBoard.transform.position
+								Vector3 expected = blackBoard.spawnedPosition
 												+ new Vector3(Random.Range(0.0f, _radius), 0.0f, Random.Range(0.0f, _radius));
 
 								if (NavMesh.SamplePosition(expected, out NavMeshHit hit, float.PositiveInfinity, NavMesh.AllAreas))
 								{
+									blackBoard.agent.isStopped = false;
 									blackBoard.agent.SetDestination(hit.position);
 								}
 								else
 								{
+									blackBoard.agent.isStopped = true;
 									_behaviour = 0;
 								}
 							}
@@ -64,13 +66,18 @@ namespace RPG.AISystems.BehaviourTree
 							_timeMark = 0.0f;
 							return Result.Success;
 						}
+						else
+						{
+							blackBoard.agent.isStopped = false;
+							return Result.Running;
+						}
 						break;
 					default:
 						break;
 				}
 			}
 
-			return Result.Running;
+			return Result.Failure;
 		}
 	}
 }

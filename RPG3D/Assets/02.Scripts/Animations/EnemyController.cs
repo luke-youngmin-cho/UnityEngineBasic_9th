@@ -23,6 +23,10 @@ public class EnemyController : CharacterController
 	[SerializeField] private LayerMask _seekMask;
 	[SerializeField] private Vector3 _seekOffset;
 	[SerializeField] private float _attackRange;
+	[SerializeField] private float _patrolRadius;
+	[SerializeField] private float _patrolPeriodMin;
+	[SerializeField] private float _patrolPeriodMax;
+
 
 	private void Start()
 	{
@@ -40,16 +44,31 @@ public class EnemyController : CharacterController
 
 		aiTree = GetComponent<Tree>();
 		aiTree.StartBuild()
-			.Sequence()
-				.Seek(_seekRadius, _seekAngle, _seekMask, _seekOffset)
-				.Condition(() =>
-				{
-					return Vector3.Distance(transform.position, aiTree.blackBoard.target.position) <= _attackRange;
-				})
-					.Attack();
+			.Selector()
+				.Parallel(Parallel.Policy.RequireOne)
+					.Seek(_seekRadius, _seekAngle, _seekMask, _seekOffset)
+					.Condition(() =>
+					{
+						if (aiTree.blackBoard.target != null)
+							return Vector3.Distance(transform.position, aiTree.blackBoard.target.position) <= _attackRange;
+						else
+							return false;
+					})
+						.Attack()
+				.ExitCurrentComposite()
+				.Patrol(_patrolRadius, _patrolPeriodMin, _patrolPeriodMax);
 				
 	}
 
+	protected override void Update()
+	{
+		NavMeshAgent agent = aiTree.blackBoard.agent;
+		_moveGain = agent.speed;
+		_vertical = Vector3.Dot(transform.forward, agent.velocity);
+		_horizontal = Vector3.Dot(transform.right, agent.velocity);
+
+		base.Update();
+	}
 
 	protected override void OnDrawGizmos()
 	{

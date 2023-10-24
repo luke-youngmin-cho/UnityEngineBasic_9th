@@ -31,6 +31,7 @@ namespace RPG.AISystems.BehaviourTree
 
 		private IEnumerator Tick()
 		{
+			stack.Clear();
 			stack.Push(_root);
 
 			while (stack.Count > 0)
@@ -119,6 +120,14 @@ namespace RPG.AISystems.BehaviourTree
 		public Tree Attack()
 		{
 			Node node = new Attack(blackBoard);
+			Attach(_current, node);
+			_current = _compositeStack.Count > 0 ? _compositeStack.Peek() : null;
+			return this;
+		}
+
+		public Tree Patrol(float radius, float periodMin, float periodMax)
+		{
+			Node node = new Patrol(blackBoard, radius, periodMin, periodMax);
 			Attach(_current, node);
 			_current = _compositeStack.Count > 0 ? _compositeStack.Peek() : null;
 			return this;
