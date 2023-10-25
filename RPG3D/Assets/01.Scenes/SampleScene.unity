@@ -3202,6 +3202,11 @@ MonoBehaviour:
     m_Bits: 64
   _slope: 45
   _useAI: 0
+  stats:
+  - id: {fileID: 11400000, guid: 408cec20890dcad4383b3e9915509976, type: 2}
+    _value: 200
+  - id: {fileID: 11400000, guid: 08392a3b0621d3d45957ee80b24589f0, type: 2}
+    _value: 10
 --- !u!136 &784719698
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4814,6 +4819,7 @@ MonoBehaviour:
     m_Bits: 64
   _slope: 45
   _useAI: 0
+  stats: []
   aiTree: {fileID: 0}
   _seekRadius: 9.73
   _seekAngle: 90

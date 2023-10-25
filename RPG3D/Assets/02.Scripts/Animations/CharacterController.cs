@@ -1,8 +1,7 @@
 using System;
-using Unity.AI.Navigation;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
+using System.Collections.Generic;
+using RPG.GameElements;
 
 public enum State
 {
@@ -63,7 +62,10 @@ public abstract class CharacterController : MonoBehaviour
 	}
 	[SerializeField] private bool _useAI;
 
-    protected virtual void Awake()
+	[Header("Stats")]
+	public List<Stat> stats;
+
+	protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();

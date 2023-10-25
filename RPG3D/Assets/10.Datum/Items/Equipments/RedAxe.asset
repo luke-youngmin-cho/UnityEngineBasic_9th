@@ -21,3 +21,10 @@ MonoBehaviour:
   model: {fileID: 2657625865324565839, guid: 8b619c2273fa4e1478003dbcbaf3223b, type: 3}
   bodyPart: 7
   levelRequired: 6
+  statModifiers:
+  - id: {fileID: 11400000, guid: 408cec20890dcad4383b3e9915509976, type: 2}
+    type: 1
+    value: 500
+  - id: {fileID: 11400000, guid: 08392a3b0621d3d45957ee80b24589f0, type: 2}
+    type: 1
+    value: 40
