@@ -1,8 +1,8 @@
 namespace RPG.AISystems.BehaviourTree
 {
 	/// <summary>
-	/// ÀÚ½ÄµéÀ» Â÷·Ê´ë·Î ¼øÈ¸ÇÏ¸é¼­ ÀÚ½ÄÀÌ Failure/Running ¹İÈ¯ÇÏ¸é
-	/// ÇØ´ç °á°ú ¹İÈ¯. ¸ğµÎ ¼º°ø½Ã Success ¹İÈ¯
+	/// ìì‹ë“¤ì„ ì°¨ë¡€ëŒ€ë¡œ ìˆœíšŒí•˜ë©´ì„œ ìì‹ì´ Failure/Running ë°˜í™˜í•˜ë©´
+	/// í•´ë‹¹ ê²°ê³¼ ë°˜í™˜. ëª¨ë‘ ì„±ê³µì‹œ Success ë°˜í™˜
 	/// </summary>
 	public class Sequence : Composite
 	{
@@ -19,11 +19,11 @@ namespace RPG.AISystems.BehaviourTree
 				if (i < currentIndex)
 					continue;
 
-				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
 
 				result = children[i].Invoke();
 
-				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
 
 				switch (result)
 				{

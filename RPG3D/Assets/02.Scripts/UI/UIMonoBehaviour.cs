@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
+using RPG.GameSystems;
 
 namespace RPG.UI
 {
 	[RequireComponent(typeof(Canvas))]
-	public abstract class UIMonoBehaviour : MonoBehaviour, IUI
+	public abstract class UIMonoBehaviour : MonoBehaviourWithInit, IUI
 	{
 		public int sortOrder 
 		{ 
@@ -33,8 +34,9 @@ namespace RPG.UI
 			onHide?.Invoke();
 		}
 
-		protected virtual void Awake()
+		public override void Init()
 		{
+			canvas = GetComponent<Canvas>();
 			UIManager.instance.Register(this);
 		}
 	}

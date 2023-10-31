@@ -38,11 +38,11 @@ namespace RPG.AISystems.BehaviourTree
 			{
 				Node current = stack.Pop();
 
-				Debug.Log($"[Tree] : Invoking ... {current}");
+				//Debug.Log($"[Tree] : Invoking ... {current}");
 
 				Result result = current.Invoke();
 
-				Debug.Log($"[Tree] : Invoked ... {current} , result : {result}");
+				//Debug.Log($"[Tree] : Invoked ... {current} , result : {result}");
 
 				if (result == Result.Running)
 				{

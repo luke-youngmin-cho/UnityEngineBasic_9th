@@ -5,8 +5,8 @@ using System.Linq;
 namespace RPG.AISystems.BehaviourTree
 {
 	/// <summary>
-	/// ÀÚ½ÄµéÀ» Â÷·Ê´ë·Î ¼øÈ¸ÇÏ¸é¼­ ÀÚ½ÄÀÌ Success/Running ¹İÈ¯ÇÏ¸é
-	/// ÇØ´ç °á°ú ¹İÈ¯. ¸ğµÎ ½ÇÆĞ½Ã Failure ¹İÈ¯.
+	/// ìì‹ë“¤ì„ ì°¨ë¡€ëŒ€ë¡œ ìˆœíšŒí•˜ë©´ì„œ ìì‹ì´ Success/Running ë°˜í™˜í•˜ë©´
+	/// í•´ë‹¹ ê²°ê³¼ ë°˜í™˜. ëª¨ë‘ ì‹¤íŒ¨ì‹œ Failure ë°˜í™˜.
 	/// </summary>
 	public class Selector : Composite
 	{
@@ -23,11 +23,11 @@ namespace RPG.AISystems.BehaviourTree
 				if (i < currentIndex)
 					continue;
 
-				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
 
 				result = children[i].Invoke();
 
-				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
 
 				switch (result)
 				{

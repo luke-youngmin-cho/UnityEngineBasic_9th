@@ -14,9 +14,10 @@ namespace RPG.UI
 		{
 			Type type = ui.GetType();
 
-            if ( (_dictionary.ContainsKey(type) == false))
+            if ((_dictionary.ContainsKey(type) == false))
             {
 				_dictionary.Add(type, ui);
+				Debug.Log($"[UIManager] : Registered {ui.GetType()}");
             }
         }
 

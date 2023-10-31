@@ -1,7 +1,7 @@
 namespace RPG.AISystems.BehaviourTree
 {
 	/// <summary>
-	/// ÀÚ½ÄµéÀ» Â÷·Ê´ë·Î ¸ğµÎ ¼øÈ¸ÇÏ°í, Á¤Ã¥¿¡ µû¶ó °á°ú ÃëÇÕÈÄ ¹İÈ¯
+	/// ìì‹ë“¤ì„ ì°¨ë¡€ëŒ€ë¡œ ëª¨ë‘ ìˆœíšŒí•˜ê³ , ì •ì±…ì— ë”°ë¼ ê²°ê³¼ ì·¨í•©í›„ ë°˜í™˜
 	/// </summary>
 	public class Parallel : Composite
 	{
@@ -28,11 +28,11 @@ namespace RPG.AISystems.BehaviourTree
 				if (i < currentIndex)
 					continue;
 
-				UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoking ... {children[i]}");
 
 				result = children[i].Invoke();
 
-				UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
+				//UnityEngine.Debug.Log($"[Tree] : Invoked ... {children[i]}, result : {result}");
 
 				switch (result)
 				{
