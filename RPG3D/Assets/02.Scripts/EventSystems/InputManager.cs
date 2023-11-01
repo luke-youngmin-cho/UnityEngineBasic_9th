@@ -25,6 +25,15 @@ namespace RPG.EventSystems
 				else
 					itemsEquippedUI.Show();
 			}
+
+#if UNITY_EDITOR
+			if (Input.GetKeyDown(KeyCode.BackQuote))
+#else
+			if (Input.GetKeyDown(KeyCode.Escape))
+#endif
+			{
+				UIManager.instance.HideLast();
+			}
 		}
 	}
 }
