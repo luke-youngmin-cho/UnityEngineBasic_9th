@@ -13,7 +13,7 @@ namespace RPG.EventSystems
 		{
 			base.Awake();
 
-			if (main != null)
+			if (main == null)
 				main = this;
 		}
 
