@@ -55,6 +55,7 @@ namespace RPG.UI
 				rect.anchorMin = Vector2.zero;
 				rect.anchorMax = Vector2.one;
 				rect.pivot = Vector2.one * 0.5f;
+				rect.localScale = Vector3.one;
 
 				EventTrigger trigger = outSidePanel.AddComponent<EventTrigger>();
 				EventTrigger.Entry entry = new EventTrigger.Entry();
