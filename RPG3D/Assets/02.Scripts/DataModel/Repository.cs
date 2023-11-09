@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEditor;
 
 namespace RPG.DataModel
 {
@@ -32,12 +31,22 @@ namespace RPG.DataModel
 		{
 			string path = $"{Application.persistentDataPath}/{nameof(T)}.json";
 
-			T dataModel = File.Exists(path) ?
-				JsonUtility.FromJson<T>(File.ReadAllText(path)) :
-				Activator.CreateInstance<T>();
+			T dataModel;
+
+			if (File.Exists(path))
+			{
+				dataModel = JsonUtility.FromJson<T>(File.ReadAllText(path));
+			}
+			else
+			{
+				dataModel = Activator.CreateInstance<T>();
+				dataModel.SetDefaultItems();
+				Save<T>();
+			}
 
 			if (_mapper.TryAdd(typeof(T), dataModel))
 				_mapper[typeof(T)] = dataModel;
+
 			return dataModel;
 		}
 
