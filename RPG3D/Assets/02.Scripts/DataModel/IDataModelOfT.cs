@@ -9,7 +9,6 @@ namespace RPG.DataModel
 	/// <typeparam name="T"> 아이템 타입 </typeparam>
 	public interface IDataModel<T> : IDataModel
 	{
-		IEnumerable<int> itemIDs { get; }
 		IEnumerable<T> items { get; }
 
 		void RequestRead(int itemID, Action<int, T> onSuccess);

@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace RPG.DataModel
 {
 	public interface IDataModel
 	{
-		IEnumerable itemIDs { get; }
+		IEnumerable<int> itemIDs { get; }
 		IEnumerable items { get; }
 
 		void RequestRead(int itemID, Action<int, object> onSuccess);

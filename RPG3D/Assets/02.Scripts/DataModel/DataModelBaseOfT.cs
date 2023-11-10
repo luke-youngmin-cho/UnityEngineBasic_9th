@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace RPG.DataModel
 {
+	[Serializable]
 	public struct Pair<T> : IComparable<Pair<T>>, IEquatable<Pair<T>>
 		where T : IEquatable<T>
 	{
@@ -34,23 +35,22 @@ namespace RPG.DataModel
 			=> !(op1 == op2);
 	}
 
+	[Serializable]
 	public abstract class DataModelBase<T> : IDataModel<T>
 		where T : IEquatable<T>
 	{
-		public IEnumerable<int> itemIDs => _items.Select(pair => pair.id);
+		public IEnumerable<int> itemIDs => m_items.Select(pair => pair.id);
 
-		public IEnumerable<T> items => _items.Select(pair => pair.item);
+		public IEnumerable<T> items => m_items.Select(pair => pair.item);
 
-		IEnumerable IDataModel.itemIDs => _items.Select(pair => pair.id);
+		IEnumerable IDataModel.items => m_items.Select(pair => pair.item);
 
-		IEnumerable IDataModel.items => _items.Select(pair => pair.item);
-
-		private List<Pair<T>> _items;
+		public List<Pair<T>> m_items;
 
 
 		public void RequestRead(int itemID, Action<int, T> onSuccess)
 		{
-			int index = _items.FindIndex(item => item.id == itemID);
+			int index = m_items.FindIndex(item => item.id == itemID);
 
 			if (index < 0)
 			{
@@ -58,12 +58,12 @@ namespace RPG.DataModel
 				return;
 			}
 
-			onSuccess?.Invoke(_items[index].id, _items[index].item);
+			onSuccess?.Invoke(m_items[index].id, m_items[index].item);
 		}
 
 		public void RequestWrite(int itemID, T item, Action<int, T> onSuccess)
 		{
-			int index = _items.FindIndex(item => item.id == itemID);
+			int index = m_items.FindIndex(item => item.id == itemID);
 
 			if (index < 0)
 			{
@@ -71,13 +71,13 @@ namespace RPG.DataModel
 				return;
 			}
 
-			_items[index] = new Pair<T>(itemID, item);
-			onSuccess?.Invoke(_items[index].id, _items[index].item);
+			m_items[index] = new Pair<T>(itemID, item);
+			onSuccess?.Invoke(m_items[index].id, m_items[index].item);
 		}
 
 		public void RequestRead(int itemID, Action<int, object> onSuccess)
 		{
-			int index = _items.FindIndex(item => item.id == itemID);
+			int index = m_items.FindIndex(item => item.id == itemID);
 
 			if (index < 0)
 			{
@@ -85,12 +85,12 @@ namespace RPG.DataModel
 				return;
 			}
 
-			onSuccess?.Invoke(_items[index].id, _items[index].item);
+			onSuccess?.Invoke(m_items[index].id, m_items[index].item);
 		}
 
 		public void RequestWrite(int itemID, object item, Action<int, object> onSuccess)
 		{
-			int index = _items.FindIndex(item => item.id == itemID);
+			int index = m_items.FindIndex(item => item.id == itemID);
 
 			if (index < 0)
 			{
@@ -98,8 +98,8 @@ namespace RPG.DataModel
 				return;
 			}
 
-			_items[index] = new Pair<T>(itemID, (T)item);
-			onSuccess?.Invoke(_items[index].id, _items[index].item);
+			m_items[index] = new Pair<T>(itemID, (T)item);
+			onSuccess?.Invoke(m_items[index].id, m_items[index].item);
 		}
 
 		public abstract void SetDefaultItems();
