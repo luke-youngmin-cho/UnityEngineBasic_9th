@@ -7,6 +7,8 @@ namespace RPG.DataModel
 	[Serializable]
 	public struct SlotData : IEquatable<SlotData>
 	{
+		public bool isEmpty => itemID == 0 && itemNum == 0;
+
 		public int itemID;
 		public int itemNum;
 
