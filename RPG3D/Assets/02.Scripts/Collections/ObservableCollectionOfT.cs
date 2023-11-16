@@ -132,6 +132,27 @@ namespace RPG.Collections
 			return -1;
 		}
 
+		public int FindIndex(Predicate<T> match)
+		{
+			for (int i = 0; i < _count; i++)
+			{
+				if (match.Invoke(items[i]))
+					return i;
+			}
+			return -1;
+		}
+
+		public List<int> FindAllIndex(Predicate<T> match)
+		{
+			List<int> list = new List<int>();
+			for (int i = 0; i < _count; i++)
+			{
+				if (match.Invoke(items[i]))
+					list.Add(i);
+			}
+			return list;
+		}
+
 		public void Insert(int index, T item)
 		{
 			Add(items[_count - 1]);

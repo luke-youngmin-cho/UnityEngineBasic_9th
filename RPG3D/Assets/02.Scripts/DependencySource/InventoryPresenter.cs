@@ -2,7 +2,6 @@ using RPG.Collections;
 using RPG.DataModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Input;
 
 namespace RPG.DependencySource
 {
@@ -88,6 +87,91 @@ namespace RPG.DependencySource
 			}
 		}
 		public AddCommand addCommand;
+
+		public class RemoveCommand
+		{
+			public RemoveCommand(InventoryPresenter presenter) => _presenter = presenter;
+
+			private InventoryPresenter _presenter;
+
+			/// <param name="slotID"> 양수면 특정 슬롯에 아이템 지울수 있는지, 음수면 전체 인벤토리에서 아이템 지울 수 있는지</param>
+			public bool CanExecute(int slotID, int itemID, int itemNum)
+			{
+				InventorySource source = _presenter.inventorySource;
+
+				if (slotID >= 0)
+				{
+					if (source[slotID].itemID.Equals(itemID) && 
+						source[slotID].itemNum >= itemNum)
+					{
+						return true;
+					}
+				}
+				else
+				{
+					List<int> indices = source.FindAllIndex(slot => slot.itemID.Equals(itemID));
+					int remains = itemNum;
+					for (int i = 0; i < indices.Count; i++)
+					{
+						remains -= source[i].itemNum;
+					}
+
+					return remains >= 0;
+				}
+				return false;
+			}
+
+			public void Execute(int slotID, int itemID, int itemNum)
+			{
+				Inventory inventory = Repository.instance.Get<Inventory>();
+				List<Pair<SlotData>> source = inventory.m_items;
+
+				if (slotID >= 0)
+				{
+					if (source[slotID].item.itemID.Equals(itemID) &&
+						source[slotID].item.itemNum >= itemNum)
+					{
+						int numEstimated = source[slotID].item.itemNum - itemNum;
+						inventory.RequestWrite(slotID, 
+											   numEstimated > 0 ? new SlotData(itemID, numEstimated)
+																: SlotData.empty,
+											   (slotID, slotData) =>
+											   {
+												   _presenter.inventorySource[slotID] = slotData;
+											   });
+					}
+				}
+				else
+				{
+					int remains = itemNum;
+					for (int i = 0; i < source.Count; i++)
+					{
+						if (source[i].item.itemID.Equals(itemID))
+						{
+							remains -= source[i].item.itemNum;
+
+							if (remains >= 0)
+							{
+								inventory.RequestWrite(i,
+													   SlotData.empty,
+													   (slotID, slotData) =>
+													   {
+														   _presenter.inventorySource[slotID] = slotData;
+													   });
+								if (remains == 0)
+									return;
+							}
+							else
+							{
+								throw new System.Exception($"[InventoryPresneter] : there're some problems with refreshing dependency source");
+							}
+						}
+					}
+				}
+			}
+		}
+		public RemoveCommand removeCommand;
+
 
 		public void Init()
 		{
