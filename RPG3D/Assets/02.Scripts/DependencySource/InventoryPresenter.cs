@@ -183,6 +183,7 @@ namespace RPG.DependencySource
 				});
 
 			addCommand = new AddCommand(this);
+			removeCommand = new RemoveCommand(this);
 		}
 	}
 }

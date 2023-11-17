@@ -22,11 +22,13 @@ namespace RPG.Collections
 		{
 			items = new T[copy.Length];
 			copy.CopyTo(items, 0);
+			_count = items.Length;
 		}
 
 		public ObservableCollection(IEnumerable<T> copy)
 		{
 			items = copy.ToArray();
+			_count = items.Length;
 		}
 
 

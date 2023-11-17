@@ -11,6 +11,7 @@ public class ItemDatum : MonoBehaviour
 			if (_instance == null)
 			{
 				_instance = Resources.Load<ItemDatum>("ItemDatum");
+				_instance.Init();
 			}
 			return _instance;
 		}
@@ -21,7 +22,7 @@ public class ItemDatum : MonoBehaviour
 	private Dictionary<int, ItemData> _dictionary;
 	[SerializeField] private List<ItemData> _datum;
 
-	private void Awake()
+	private void Init()
 	{
 		_dictionary = new Dictionary<int, ItemData>();
 		foreach (var data in _datum)
