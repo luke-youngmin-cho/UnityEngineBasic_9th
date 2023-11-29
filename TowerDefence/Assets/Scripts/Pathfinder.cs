@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,9 +12,13 @@ public class Pathfinder : MonoBehaviour
 	public Option option;
 	public Vector2 destination;
 	public List<Vector2> path;
+	private LineRenderer _lineRenderer;
+	[SerializeField] private float _drawLineSpeed = 1.0f;
+	[SerializeField] private Vector3 _drawLineOffset = Vector3.back;
 
 	private void Start()
 	{
+		_lineRenderer = GetComponent<LineRenderer>();
 		TryGetPath();
 	}
 
@@ -31,6 +36,10 @@ public class Pathfinder : MonoBehaviour
 			default:
 				break;
 		}
+
+		if (result)
+			StartCoroutine(C_DrawPathLine());
+
 		return result;
 	}
 
@@ -168,5 +177,28 @@ public class Pathfinder : MonoBehaviour
 		path.Add(Map.instance.CoordToVector(coord));
 		path.Reverse();
 		return path;
+	}
+
+	private IEnumerator C_DrawPathLine()
+	{
+		_lineRenderer.positionCount = 2;
+		_lineRenderer.SetPosition(0, (Vector3)path[0] + _drawLineOffset);
+
+		for (int i = 1; i < path.Count; i++)
+		{
+			float timeMark = Time.time;
+			float t = 0;
+			while (t < 1)
+			{
+				t = _drawLineSpeed * (Time.time - timeMark);
+				Vector3 pos = Vector3.Lerp(path[i - 1], path[i], t) + _drawLineOffset;
+				_lineRenderer.SetPosition(i, pos);
+				yield return null;
+			}
+
+			if (i < path.Count - 1)
+				_lineRenderer.positionCount++;
+		}
+
 	}
 }
