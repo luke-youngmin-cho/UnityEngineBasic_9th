@@ -35,7 +35,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Collections", "Collections\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortAlgorithms", "SortAlgorithms\SortAlgorithms.csproj", "{16A95C7F-0749-4AB1-8F23-6778BF094035}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThread_Cafe", "MultiThread_Cafe\MultiThread_Cafe.csproj", "{1AA4FFD9-0CF5-4CFF-836B-051D83F0A703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThread_Cafe", "MultiThread_Cafe\MultiThread_Cafe.csproj", "{1AA4FFD9-0CF5-4CFF-836B-051D83F0A703}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThread_RaceCondition", "MultiThread_RaceCondition\MultiThread_RaceCondition.csproj", "{7805DDB7-52EE-4BCE-9821-B3AD84CF1EFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{1AA4FFD9-0CF5-4CFF-836B-051D83F0A703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AA4FFD9-0CF5-4CFF-836B-051D83F0A703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AA4FFD9-0CF5-4CFF-836B-051D83F0A703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7805DDB7-52EE-4BCE-9821-B3AD84CF1EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7805DDB7-52EE-4BCE-9821-B3AD84CF1EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7805DDB7-52EE-4BCE-9821-B3AD84CF1EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7805DDB7-52EE-4BCE-9821-B3AD84CF1EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
